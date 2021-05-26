@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>KNU Judge</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            div.default {
+                width: 1200px;
+                margin: 50px auto 50px auto
+            }
+            p.mk-problem {
+                width: 85px;
+                height: 35px;
+                background-color: #ccc;
+                float: right;
+                text-align: center;
+                margin-bottom: 10px;
+                padding-top: 5px;
+            }
+            p.mk-problem a {
+                text-decoration: none;
+                color: #212529 !important;
+            }
+            p.mk-problem a:hover {text-decoration: underline;}
+            table.list-table {
+                width: 1200px;
+                border-collapse: collapse;
+                text-align: left;
+                line-height: 1.5;
+                border-bottom: 1px solid #ccc;
+            }
+            table.list-table thead th {
+                width: 150px;
+                padding: 10px;
+                font-size: 0.9rem;
+                font-weight: 400;
+                vertical-align: top;
+                color: #fff;
+                background: #212529 !important;
+                border-right: 1px solid #ccc;
+                }
+            table.list-table tbody td {
+                width: 350px;
+                padding: 10px;
+                border-right: 1px solid #ccc;
+                border-bottom: 1px solid #ccc;
+            }
+            table.list-table thead th:last-child {border-right: none;}
+            table.list-table tbody td:last-child {border-right: 1px solid white;}
+            /* table.list-table .even {background: #fdf3f5;} */
+            table.list-table #p_num {width: 10%;}
+            table.list-table #p_title {width: 40%;}
+            table.list-table #class {width: 20%;}
+            table.list-table #correct_num {width: 10%;}
+            table.list-table #submit {width: 10%;}
+            table.list-table #correct_rate {width: 10%;}
+            table.list-table a{text-decoration: none;}
+            table.list-table a:hover{text-decoration-line: underline;}
+        </style>
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#!">KNU Online Judge</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문제</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">순위</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">소개</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="default">
+        <p class="mk-problem"><a href="#">출제하기</a></p>
+
+        <!-- table -->
+        <table class="list-table">
+            <thead>
+            <tr>
+              <th id="p_num">문제 번호</th>
+              <th id="p_title">문제 제목</th>
+              <th id="class">분류</th>
+              <th id="correct_num">맞은 사람</th>
+              <th id="submit">제출</th>
+              <th id="correct_rate">정답 비율</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (var i = 0; i < 100; i++) { %>
+            <tr>
+              <td>0001</td>
+              <td><a href="#">A+B</a></td>
+              <td>#greedy</td>
+              <td>100000</td>
+              <td>500000</td>
+              <td id="last">20%</td>
+            </tr>
+            <% } %>
+            </tbody>
+          </table>   
+          </div>       
+    
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

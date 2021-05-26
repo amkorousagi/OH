@@ -18,6 +18,10 @@ app.get('/ranking', function(req, res) {
     res.render('ranking')
 })
 
+app.get('/about', function(req, res) {
+    res.render('about')
+})
+
 app.listen(4000, function() {
     console.log('App listening on port 4000')
 })

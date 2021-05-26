@@ -10841,3 +10841,8 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+.div-section {
+  width: 100%;
+  height: 680px;
+}

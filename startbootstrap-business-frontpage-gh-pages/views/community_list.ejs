@@ -22,8 +22,8 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문제</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">문제</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">게시판</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">순위</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">소개</a></li>
                     </ul>
@@ -31,29 +31,27 @@
             </div>
         </nav>
         <div class="default">
-        <p class="write_btn"><a href="#">출제하기</a></p>
+        <p class="write_btn"><a href="#">글쓰기</a></p>
 
         <!-- table -->
         <table class="list-table">
             <thead>
             <tr>
-              <th id="p_num">문제 번호</th>
-              <th id="p_title">문제 제목</th>
-              <th id="class">분류</th>
-              <th id="correct_num">맞은 사람</th>
-              <th id="submit">제출</th>
-              <th id="correct_rate">정답 비율</th>
+                <th id="c_num">글 번호</th>
+                <th id="c_title">제목</th>
+                <th id="category">카테고리</th>
+                <th id="writer">글쓴이</th>
+                <th id="date">작성일</th>
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < 100; i++) { %>
+            <% for (var i = 0; i < 20; i++) { %>
             <tr>
-              <td>0001</td>
-              <td><a href="#">A+B</a></td>
-              <td>#greedy</td>
-              <td>100000</td>
-              <td>500000</td>
-              <td id="last">20%</td>
+                <td>0001</td>
+                <td><a href="#">질문합니다.</a></td>
+                <td>질문</td>
+                <td>knu_student</td>
+                <td>2021-05-26</td>
             </tr>
             <% } %>
             </tbody>

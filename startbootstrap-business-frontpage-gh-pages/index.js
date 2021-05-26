@@ -10,6 +10,10 @@ app.get('/problem_list', function(req, res) {
     res.render('problem_list')
 })
 
+app.get('/community_list', function(req, res) {
+    res.render('community_list')
+})
+
 app.listen(4000, function() {
     console.log('App listening on port 4000')
 })

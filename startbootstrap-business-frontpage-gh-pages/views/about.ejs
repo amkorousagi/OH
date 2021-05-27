@@ -12,6 +12,85 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            div.title {
+                position: relative;
+                width: 800px;
+                height: 60px;
+                color: white;
+                margin-left: auto;
+                margin-right: auto;
+                top: 210px;
+                /* background-color: blue; */
+            }
+            .title-text {
+                width: 50px;
+                height: 30px;
+                display: inline;
+                position: relative;
+                font-weight: bold;
+                font-size: 50px;
+                color: white;
+                top: -10px;
+            }
+            .bounce-red {animation: red_ 1s linear infinite alternate;}
+            #N {animation-delay: 0.1s;}
+            #U {animation-delay: 0.2s;}
+            @keyframes red_ {
+                from {color: white;}
+                to { color: red;}
+            }
+            .btn-down {
+                width: 300px;
+                height: 80px;
+                position: relative;
+                top: 50px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .btn-down a {
+                width: 100%;
+                height: 100%;
+                text-decoration: none;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+                position: relative;
+                background-color: darkgoldenrod;
+                padding: 10px 20px 10px 20px;
+                border-radius: 10px 10px 10px 10px;
+            }
+            .btn-down a:hover {
+                background-color: white;
+                color: darkgoldenrod;
+            }            
+            .members {
+                width: 270px;
+                height: 360px;
+                background-color: white;
+                position: relative;
+                float: left;
+                border-radius: 50px;
+                opacity: 0.9;
+            }
+            #mem1 {
+                top: 50px;
+                left: 65px;
+            }
+            #mem2 {
+                top: 320px;
+                left: 165px;
+            }
+            #mem3 {
+                top: 50px;
+                left: 265px;
+            }
+            #mem4 {
+                top: 320px;
+                left: 365px;
+            }
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -31,13 +110,28 @@
         </nav>
 
         <!-- section1-->
-        <section class="bg-dark div-section"></section>
+        <section class="bg-dark div-section">
+            <div class="text-center title">
+               <div class="title-text bounce-red">K</div><div class="title-text bounce-red" id="N">N</div><div class="title-text bounce-red" id="U">U</div><div class="title-text bounce-red"> </div>
+               <div class="title-text"> Online Judge</div>
+                
+            </div>
+            <div class="text-center title">
+                <div class="btn-down"><a href="#section2">about "Oh!"</a></div>
+             </div>
+
+        </section>
         <!-- section2-->
-        <section class="div-section"></section>
+        <section class="bg-dark div-section" id="section2">
+            <div class="members" id="mem1"></div>
+            <div class="members" id="mem2"></div>
+            <div class="members" id="mem3"></div>
+            <div class="members" id="mem4"></div>
+        </section>
         <!-- section3-->
-        <section class="bg-dark div-section"></section>
-        <!-- section4-->
         <section class="div-section"></section>
+        <!-- section4-->
+        <section class="bg-dark div-section"></section>
         <!-- Footer-->
         <%- include('layouts/footer'); -%>
         <%- include('layouts/scripts'); -%>

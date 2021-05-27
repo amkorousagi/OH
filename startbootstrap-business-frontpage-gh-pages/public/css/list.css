@@ -47,12 +47,13 @@ table.list-table tbody td {
 table.list-table thead th:last-child {border-right: none;}
 table.list-table tbody td:last-child {border-right: 1px solid white;}
 /* table.list-table .even {background: #fdf3f5;} */
-table.list-table #p_num {width: 10%;}
+table.list-table #p_num {width: 8%;}
 table.list-table #p_title {width: 40%;}
+table.list-table #difficulty {width: 8%;}
 table.list-table #class {width: 20%;}
-table.list-table #correct_num {width: 10%;}
-table.list-table #submit {width: 10%;}
-table.list-table #correct_rate {width: 10%;}
+table.list-table #correct_num {width: 8%;}
+table.list-table #submit {width: 8%;}
+table.list-table #correct_rate {width: 8%;}
 table.list-table a{text-decoration: none;}
 table.list-table a:hover{text-decoration: underline;}
 

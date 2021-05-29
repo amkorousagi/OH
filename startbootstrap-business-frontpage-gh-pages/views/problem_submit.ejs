@@ -39,6 +39,21 @@
             position: relative;
         }
 
+        .submit_table {
+            border-top: 1px dashed black;
+            border-collapse: collapse;
+            width: 90%;
+           
+            margin-left: 10%;
+
+        }
+
+        td {
+            border-bottom: 1px dashed black;
+            padding: 10px;
+            text-align: left;
+        }
+
         .case {
 
             display: block;
@@ -119,16 +134,25 @@
         </div>
     </nav>
     </br>
-    <h2>&nbsp 문제 출제하기</h2>
+    <h2>&nbsp; 문제 출제하기</h2>
     <hr></br>
-    <h4>&nbsp&nbsp 제목 &nbsp<input type="text" class="title" ></br></br></h4>
-    <div>
-        <h5>&nbsp&nbsp 난이도&nbsp&nbsp
-            <input type="radio" name="level" value="high">&nbsphigh&nbsp
-            <input type="radio" name="level" value="middle">&nbspmiddle&nbsp
-            <input type="radio" name="level" value="low">&nbsplow </br></br>
-        </h5>
-    </div>
+    <table class="submit_table">
+        <tr>
+            <td><h4>제목</h4></td>
+            <td colspan="5" id="title">
+                <input size="100px" type="text">
+            </td>
+        </tr>
+        <tr>
+           <td colspan="6">
+            <h5>난이도&nbsp;&nbsp;
+            <input type="radio" name="level" value="high">high&nbsp;&nbsp;
+            <input type="radio" name="level" value="middle">middle&nbsp;&nbsp;
+            <input type="radio" name="level" value="low">low</h5>
+           </td>
+        </tr>
+    </table>
+    </br>
     <div>
         <div><textarea onkeydown="textarea_tab(this)" class="detail" placeholder="문제를 입력해주세요."></textarea></br></div>
     </div>

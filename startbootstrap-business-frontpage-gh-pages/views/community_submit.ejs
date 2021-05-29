@@ -62,8 +62,8 @@
             border-top: 1px dashed #bbb;
             border-bottom: 1px dashed #fff;
         }
-        
-        .submit_table{
+
+        .submit_table {
             border-top: 1px solid black;
             border-collapse: collapse;
             width: 90%;
@@ -71,9 +71,19 @@
             margin-left: 5%;
 
         }
-        td{
+
+        td {
             border-bottom: 1px solid black;
             padding: 10px;
+        }
+
+        .detail {
+            display: block;
+            margin: 0 auto;
+            width: 80%;
+            height: 500px;
+            resize: none;
+            position: relative;
         }
     </style>
     <script>
@@ -108,24 +118,29 @@
         </div>
     </nav>
     </br>
-    <!--header -->
-    <h2>&nbsp게시판 글쓰기</h2><hr>
+    <h2>&nbsp; 게시판 글쓰기</h2>
+    <hr>
     <!--table-->
     <table class="submit_table">
         <tr>
-            <td>제목</td>
+            <td>
+                <h4>제목</h4>
+            </td>
             <td colspan="5" id="title">
-              <input size ="100px" type="text">
+                <input size="100px" type="text">
             </td>
         </tr>
         <tr>
-            <td id="pro_num">문제번호</td>
+            <td id="pro_num">
+                <h4>문제번호</h4>
+            </td>
             <td><input type="nmuber"></td>
         </tr>
-        <tr>
-           <td colspan="6" rowspan="10">content content</td>
-        </tr>
     </table>
+    </br>
+    <div>
+        <div><textarea onkeydown="textarea_tab(this)" class="detail" placeholder="내용을 입력해주세요."></textarea></br></div>
+    </div>
     </br>
     <div class="wrap">
         <button class="button">Add</button>

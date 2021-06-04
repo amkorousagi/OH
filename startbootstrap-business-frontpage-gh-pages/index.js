@@ -38,6 +38,10 @@ app.get('/community_detail', function(req, res) {
     res.render('community_detail')
 })
 
+app.get('/problem_detail', function(req, res) {
+    res.render('problem_detail')
+})
+
 app.listen(4000, function() {
     console.log('App listening on port 4000')
 })

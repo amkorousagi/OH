@@ -40,16 +40,15 @@
         }
 
         .submit_table {
-            border-top: 1px dashed black;
+            border-top: 1px solid black;
             border-collapse: collapse;
             width: 90%;
-           
             margin-left: 10%;
 
         }
 
         td {
-            border-bottom: 1px dashed black;
+            border-bottom: 1px solid black;
             padding: 10px;
             text-align: left;
         }
@@ -100,6 +99,11 @@
         hr {
             border-top: 1px dashed #bbb;
             border-bottom: 1px dashed #fff;
+        }
+        
+        .header{
+            margin-left: 5%;
+            font-size: 22px;
         }
     </style>
     <script>
@@ -157,17 +161,17 @@
         <div><textarea onkeydown="textarea_tab(this)" class="detail" placeholder="문제를 입력해주세요."></textarea></br></div>
     </div>
     <div>
-        <h5>&nbsp 입력</h5>
+        <h5 class="header">&nbsp 입력</h5>
         <hr>
         <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
     </div>
     <div>
-        <h5>&nbsp 출력</h5>
+        <h5 class="header">&nbsp 출력</h5>
         <hr>
         <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
     </div>
     <div>
-        <h5>&nbsp 알고리즘 분류</h5>
+        <h5 class="header">&nbsp 알고리즘 분류</h5>
         <hr>
         <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
     </div>

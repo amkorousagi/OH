@@ -34,6 +34,10 @@ app.get('/community_submit', function(req, res) {
     res.render('community_submit')
 })
 
+app.get('/community_detail', function(req, res) {
+    res.render('community_detail')
+})
+
 app.listen(4000, function() {
     console.log('App listening on port 4000')
 })

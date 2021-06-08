@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>KNU Judge</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        @font-face {
+            font-family: 'NanumBarunGothic';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+        }
+
+        * {
+            font-family: 'NanumBarunGothic' !important;
+        }
+
+        .wrap {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            width: 140px;
+            height: 45px;
+            font-family: 'InfinitySans-RegularA1';
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button:hover {
+            background-color: #2EE59D;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        hr {
+            border-top: 1px dashed #bbb;
+            border-bottom: 1px dashed #fff;
+        }
+
+        .submit_table {
+            border-top: 1px solid black;
+            border-collapse: collapse;
+            width: 90%;
+            text-align: left;
+            margin-left: 5%;
+        }
+
+        td {
+            border-bottom: 1px solid black;
+            padding: 10px;
+        }
+
+    </style>
+    <script>
+        function textarea_tab(ob) {
+            if (event.keyCode == 9) {
+                ob.focus();
+                space = "    ";
+                ob.selection = document.selection.createRange();
+                ob.selection.text = space;
+                event.returnValue = false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#" onclick="location.href='/'">KNU Online Judge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">게시판</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">순위</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">소개</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </br>
+    <h2>&nbsp; 게시판 </h2>
+    <hr>
+    <!--table-->
+    <table class="detail_table" col="4" row="5">
+        <tr>
+            <td id="title" width="50">
+                <h4>제목</h4>
+            </td>
+            <td id="content" width="200">
+                <a>제목입니다</a>
+            </td>
+        </tr>
+        <tr>
+            <td id="title" width="50">
+                <h4>문제번호</h4>
+            </td>
+            <td colspan="3">
+                <a id="content" width="200">025</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" rowspan="5">
+                내용입니다
+            </td>
+        </tr>
+    </table>
+    </br>
+    </br>
+    <div class="wrap">
+        <button class="button">Add</button>
+    </div>
+    </br>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-5">
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

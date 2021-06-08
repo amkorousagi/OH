@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>KNU Judge</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/list.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/">KNU Online Judge</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/problem_list">문제</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/ranking">순위</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/community_list">게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">소개</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="default">
+        <p class="write_btn"><a href="#">글쓰기</a></p>
+
+        <!-- table -->
+        <table class="list-table">
+            <thead>
+            <tr>
+                <th id="c_num">글 번호</th>
+                <th id="c_title">제목</th>
+                <th id="category">카테고리</th>
+                <th id="writer">글쓴이</th>
+                <th id="date">작성일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (var i = 0; i < 20; i++) { %>
+            <tr>
+                <td>0001</td>
+                <td><a href="#">질문합니다.</a></td>
+                <td>질문</td>
+                <td>knu_student</td>
+                <td>2021-05-26</td>
+            </tr>
+            <% } %>
+            </tbody>
+          </table>   
+          </div>       
+    
+        <!-- Footer-->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>

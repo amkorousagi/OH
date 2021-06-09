@@ -13,92 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        @font-face {
-            font-family: 'NanumBarunGothic';
-            font-style: normal;
-            font-weight: 400;
-            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-        }
-
-        * {
-            font-family: 'NanumBarunGothic' !important;
-        }
-
-        .title {
-            width: 75%;
-        }
-
-        .detail {
-            display: block;
-            margin: 0 auto;
-            width: 80%;
-            height: 500px;
-            resize: none;
-            position: relative;
-        }
-
-        .detail_table {
-            border-top: 1px solid black;
-            border-collapse: collapse;
-            width: 90%;
-            margin-left: 10%;
-
-        }
-
-        td {
-            border-top: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .case{
-            margin-left: 10%;
-        }
-
-
-        .wrap {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .button {
-            width: 140px;
-            height: 45px;
-            font-family: 'InfinitySans-RegularA1';
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .button:hover {
-            background-color: #2EE59D;
-            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
-        }
-
-        hr {
-            border-top: 1px dashed #bbb;
-            border-bottom: 1px dashed #fff;
-        }
-        
-        .header{
-            font-size: 22px;
-        }
-    </style>
+    <link href="css/prodet.css" rel="stylesheet" />
     <script>
         function textarea_tab(ob) {
             if (event.keyCode == 9) {
@@ -122,10 +37,10 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문제</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">게시판</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">순위</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">소개</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/problem_list">문제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community_list">게시판</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ranking">순위</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">소개</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
                     <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
                 </ul>
@@ -160,19 +75,19 @@
     </table>
     </br>
     <div>
-        <h5 class="header">&nbsp 입력</h5>
+        <span><h5 class="header">&nbsp;입력&nbsp;</h5></span>
         <hr class="case_hr">
-        <div><a id="case">입력케이스</a></div></br>
+        <a id="case">입력케이스</a></br></br>
     </div>
     <div>
-        <h5 class="header">&nbsp 출력</h5>
+        <span><h5 class="header">&nbsp;출력&nbsp;</h5></span>
         <hr class="case_hr">
-        <div><a id="case">출력케이스</a></div></br>
+        <a id="case">출력케이스</a></br></br>
     </div>
     <div>
-        <h5 class="header">&nbsp 알고리즘 분류</h5>
+        <span><h5 class="header">&nbsp;알고리즘 분류&nbsp;</h5></span>
         <hr class="case_hr">
-        <div><a id="case">알고리즘 분류 내용</a></div></br>
+        <a id="case">알고리즘 분류 내용</a></br></br>
     </div>
     </br>
     <!-- Footer-->

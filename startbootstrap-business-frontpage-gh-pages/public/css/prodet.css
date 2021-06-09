@@ -56,4 +56,8 @@ hr.case_hr{
 .header{
     font-size: 22px;
     margin-left: 10%;
+    border-bottom: 2px solid darkgoldenrod;
+    position: relative;
+    top:17px;
+    width: fit-content;
 }

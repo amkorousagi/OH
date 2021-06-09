@@ -10844,10 +10844,7 @@ textarea.form-control-lg {
 
 .div-section {
   width: 100%;
-<<<<<<< Updated upstream
   height: 721px !important;
-=======
-  height: 721px;
 }
 
 .home-link {
@@ -10858,5 +10855,4 @@ textarea.form-control-lg {
 .home-link:hover {
   color: #000;
   text-decoration: underline;
->>>>>>> Stashed changes
 }

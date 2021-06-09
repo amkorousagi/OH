@@ -4,14 +4,14 @@ const User = require("../models/User")
 const bcrypt = require("bcrypt")
 const saltRounds = 10
 
-userRouter.get("/read", (req, res, next) => {
+userRouter.get("/", (req, res, next) => {
   try {
     return res.status(200).json({ success: true, user: req.user })
   } catch (err) {
     next(err)
   }
 })
-userRouter.get("/nickname/:id", async (req, res, next) => {
+userRouter.get("/:id", async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id)
     if (user.Nickname)
@@ -21,7 +21,7 @@ userRouter.get("/nickname/:id", async (req, res, next) => {
     next(err)
   }
 })
-userRouter.post("/update", async (req, res, next) => {
+userRouter.patch("/", async (req, res, next) => {
   try {
     const { UserPassword, Nickname } = req.body
     if (UserPassword === undefined && Nickname === undefined)
@@ -49,7 +49,7 @@ userRouter.post("/update", async (req, res, next) => {
     next(err)
   }
 })
-userRouter.delete("/delete", async (req, res, next) => {
+userRouter.delete("/", async (req, res, next) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.user._id)
     if (!deletedUser) {

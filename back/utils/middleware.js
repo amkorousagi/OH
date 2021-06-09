@@ -12,7 +12,6 @@ const tokenExtractor = (req, res, next) => {
       req.token = authorization.substring(7)
       next()
     } else {
-      
       req.token = ""
       next()
     }
@@ -23,7 +22,7 @@ const tokenExtractor = (req, res, next) => {
 
 const userExtractor = async (req, res, next) => {
   try {
-    if(req.token=="") next()
+    if (req.token == "") next()
     const decodedToken = await jwt.verify(req.token, config.secret)
     if (!req.token || !decodedToken) throw new Error("no token")
     const user = await User.findById(decodedToken._id)
@@ -39,4 +38,12 @@ const errorHandling = (err, req, res, next) => {
   res.status(500).json({ success: false, err })
 }
 
-module.exports = { tokenExtractor, userExtractor, errorHandling }
+const unknownEndpoint = (req, res) => {
+  res.status(404).send({ error: "unknown endpoint" })
+}
+module.exports = {
+  tokenExtractor,
+  userExtractor,
+  errorHandling,
+  unknownEndpoint,
+}

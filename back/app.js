@@ -50,6 +50,8 @@ app.use("/problem", problemRouter)
 app.use("/comment", commentRouter)
 app.use("/score", scoreRouter)
 
+app.use(middleware.unknownEndpoint)
+
 app.listen(config.port, "0.0.0.0", () => {
   console.log("OH! backend server listening on port ", config.port)
 })

@@ -64,31 +64,47 @@
             .btn-down a:hover {
                 background-color: white;
                 color: darkgoldenrod;
-            }            
+            }
             .members {
-                width: 270px;
-                height: 360px;
-                background-color: white;
+                width: 1400px;
+                height: 721px;
+                margin-left: auto;
+                margin-right: auto;
+                /* background-color: red; */
+            }      
+            .member {
+                width: 300px;
+                height: 400px;
+                background-color: #212529 !important;
                 position: relative;
-                float: left;
+                /* float: left; */
                 border-radius: 50px;
-                opacity: 0.9;
+                /* opacity: 0.9; */
+                display: inline-block;
             }
             #mem1 {
-                top: 50px;
-                left: 65px;
+                top: 40px;
             }
             #mem2 {
-                top: 320px;
-                left: 165px;
+                top: 281px;
+                left: 60px;
             }
             #mem3 {
-                top: 50px;
-                left: 265px;
+                top: 40px;
+                left: 120px;
             }
             #mem4 {
-                top: 320px;
-                left: 365px;
+                float: right;
+                top: 281px;
+            }
+            .mem_text {
+                font-size: large;
+                text-align: center;
+                color: white;
+                background-color: red;
+                text-decoration: none;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
     </head>
@@ -122,11 +138,13 @@
 
         </section>
         <!-- section2-->
-        <section class="bg-dark div-section" id="section2">
-            <div class="members" id="mem1"></div>
-            <div class="members" id="mem2"></div>
-            <div class="members" id="mem3"></div>
-            <div class="members" id="mem4"></div>
+        <section class="div-section" id="section2">
+            <div class="members">
+                <div class="member" id="mem1"><a href="#" class="mem_text">member1</a></div>
+                <div class="member" id="mem2"><a href="#" class="mem_text">member2</a></div>
+                <div class="member" id="mem3"><a href="#" class="mem_text">member3</a></div>
+                <div class="member" id="mem4"><a href="#" class="mem_text">member4</a></div>
+            </div>
         </section>
         <!-- section3-->
         <section class="div-section"></section>

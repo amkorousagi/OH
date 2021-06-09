@@ -6,9 +6,9 @@
     src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
 }
 
-* {
+/* * {
     font-family: 'NanumBarunGothic' !important;
-}
+} */
 
 .wrap {
     height: 100%;
@@ -36,8 +36,8 @@
 }
 
 .button:hover {
-    background-color: #2EE59D;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    background-color: rgba(184, 135, 11, 0.9);
+    box-shadow: 0px 15px 20px rgb(160, 116, 7, 0.4);
     color: #fff;
     transform: translateY(-7px);
 }
@@ -48,7 +48,7 @@ hr {
 }
 
 .submit_table {
-    border-top: 1px solid black;
+    border-top: 1px dashed #bbb;
     border-collapse: collapse;
     width: 80%;
     text-align: left;
@@ -57,7 +57,7 @@ hr {
 }
 
 td {
-    border-bottom: 1px solid black;
+    border-bottom: 0.5px dashed #bbb;
     padding: 10px;
 }
 

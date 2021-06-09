@@ -4289,7 +4289,7 @@ textarea.form-control-lg {
 
 .card-body {
   flex: 1 1 auto;
-  padding: 1rem 1rem;
+  padding: 0.7rem;
 }
 
 .card-title {
@@ -10844,5 +10844,19 @@ textarea.form-control-lg {
 
 .div-section {
   width: 100%;
+<<<<<<< Updated upstream
   height: 721px !important;
+=======
+  height: 721px;
+}
+
+.home-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.home-link:hover {
+  color: #000;
+  text-decoration: underline;
+>>>>>>> Stashed changes
 }

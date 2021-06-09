@@ -27,7 +27,7 @@ mongoose
     useCreateIndex: true,
   })
   .then((data) => {
-    logger.info("connected to MongoDB ", data)
+    logger.info("connected to MongoDB ")
   })
   .catch((err) => {
     logger.err("error connecting to MongoDB: ", err)
@@ -50,6 +50,10 @@ app.use("/problem", problemRouter)
 app.use("/comment", commentRouter)
 app.use("/score", scoreRouter)
 
-app.listen(port, "0.0.0.0", () => {
-  console.log("OH! backend server listening on port ", port)
+app.listen(config.port, "0.0.0.0", () => {
+  console.log("OH! backend server listening on port ", config.port)
 })
+
+/*
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMwNWQ2YmU2YzAxZjQwZTc3NzVjZTUiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkRGdldTBReTRNall2MHZRV0xseVM2ZXRaMHlmWjhzcFlNdFVadFdocXc5elp1TE05a1ZMZkMiLCJOaWNrbmFtZSI6ImFta29ybyIsIlNvbHZlZFByb2JsZW0iOltdLCJfX3YiOjAsImlhdCI6MTYyMzIxOTgyMSwiZXhwIjoxNjIzNDc5MDIxfQ.WG9atLITTkZwbTf1RnmAWm31At_Y8-ezGU3zRnBo6lE
+*/

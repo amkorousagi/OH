@@ -2,7 +2,7 @@
 const commentRouter = require("express").Router()
 const Comment = require("../models/Comment")
 
-commentRouter.get("/read", async (req, res, next) => {
+commentRouter.get("/", async (req, res, next) => {
   try {
     const { RefPost, ToComment, Writer } = req.query
     let target = {}
@@ -15,7 +15,7 @@ commentRouter.get("/read", async (req, res, next) => {
     next(err)
   }
 })
-commentRouter.get("/read/:id", async (req, res, next) => {
+commentRouter.get("/:id", async (req, res, next) => {
   try {
     const comment = await Comment.findById(req.params.id)
     if (comment) return res.status(200).json({ success: true, comment })
@@ -24,7 +24,7 @@ commentRouter.get("/read/:id", async (req, res, next) => {
     next(err)
   }
 })
-commentRouter.post("/create", async (req, res, next) => {
+commentRouter.post("/", async (req, res, next) => {
   try {
     const { Title, Body, RefPost, ToComment } = req.body
     if (RefPost === undefined) throw new Error("no ref post")
@@ -41,11 +41,12 @@ commentRouter.post("/create", async (req, res, next) => {
     next(err)
   }
 })
-commentRouter.post("/update/:id", async (req, res, next) => {
+commentRouter.patch("/:id", async (req, res, next) => {
   try {
     const origin = await Comment.findById(req.params.id)
     if (!origin) throw new Error("invalid comment id")
-    if (req.user._id !== origin.Writer) throw new Error("not writer")
+    if (req.user._id.toString() !== origin.Writer.toString())
+      throw new Error("not writer")
 
     const { Title, Body } = req.body
     if (Title === undefined && Body === undefined)
@@ -65,11 +66,12 @@ commentRouter.post("/update/:id", async (req, res, next) => {
     next(err)
   }
 })
-commentRouter.delete("/delete/:id", async (req, res, next) => {
+commentRouter.delete("/:id", async (req, res, next) => {
   try {
     const origin = await Comment.findById(req.params.id)
     if (!origin) throw new Error("invalid comment id")
-    if (req.user._id !== origin.Writer) throw new Error("not writer")
+    if (req.user._id.toString() !== origin.Writer.toString())
+      throw new Error("not writer")
 
     const deletedComment = await Comment.findByIdAndDelete(req.params.id)
     if (!deletedComment) throw new Error("can not delete no comment")

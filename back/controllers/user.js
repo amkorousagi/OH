@@ -2,8 +2,6 @@
 const userRouter = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const config = require("../utils/config")
 const saltRounds = 10
 
 userRouter.get("/read", (req, res, next) => {
@@ -17,7 +15,7 @@ userRouter.get("/nickname/:id", async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id)
     if (user.Nickname)
-      return res.status(200).json({ success: true, nickname: userNickname })
+      return res.status(200).json({ success: true, nickname: user.Nickname })
     else throw new Error("invalid user id")
   } catch (err) {
     next(err)
@@ -32,7 +30,8 @@ userRouter.post("/update", async (req, res, next) => {
     let target = {}
     if (Nickname) {
       const dup = await User.find({ Nickname })
-      if (dup) throw new Error("duplicated nickname")
+      console.log(dup.length)
+      if (dup.length) throw new Error("duplicated nickname")
       target.Nickname = Nickname
     }
     if (UserPassword) {

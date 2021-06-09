@@ -85,7 +85,14 @@ hr {
     border-bottom: 1px dashed #fff;
 }
 
+hr.case_hr{
+    width: 80%;
+    margin-left: 10%;
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px dashed #fff;
+}
+
 .header{
-    margin-left: 5%;
+    margin-left: 10%;
     font-size: 22px;
 }

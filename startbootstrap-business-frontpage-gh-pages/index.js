@@ -42,6 +42,14 @@ app.get('/problem_detail', function(req, res) {
     res.render('problem_detail')
 })
 
+app.get('/login', function(req, res) {
+    res.render('login')
+})
+
+app.get('/register', function(req, res) {
+    res.render('register')
+})
+
 app.listen(4000, function() {
     console.log('App listening on port 4000')
 })

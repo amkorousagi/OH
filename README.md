@@ -129,6 +129,7 @@ return success, comments
 ### Update
 method : PATCH  
 path : http://localhost:3001/comment/:id  
+body : { Title, Body } ; at least one
 
 return success, updated comment  
 

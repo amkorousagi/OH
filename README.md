@@ -143,4 +143,21 @@ return success, deleted comment
 
 ## score
 
-### Comming soon ...
+### Create
+method : POST
+path : http://localhost:3001/score
+body : { Code, RefProblem } 
+
+return success, score
+
+### Read
+method : GET
+path : http://localhost:3001/score
+
+return success, scores
+
+### Read one
+method : GET
+path : http://localhost:3001/score/:id
+
+return success, score

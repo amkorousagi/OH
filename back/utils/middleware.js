@@ -12,7 +12,9 @@ const tokenExtractor = (req, res, next) => {
       req.token = authorization.substring(7)
       next()
     } else {
-      throw new Error("invalid token")
+      
+      req.token = ""
+      next()
     }
   } catch (err) {
     next(err)
@@ -21,9 +23,10 @@ const tokenExtractor = (req, res, next) => {
 
 const userExtractor = async (req, res, next) => {
   try {
+    if(req.token=="") next()
     const decodedToken = await jwt.verify(req.token, config.secret)
     if (!req.token || !decodedToken) throw new Error("no token")
-    const user = await User.findById(decodedToken.id)
+    const user = await User.findById(decodedToken._id)
     req.user = user
     next()
   } catch (err) {

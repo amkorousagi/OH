@@ -5,7 +5,7 @@ const Score = require("../models/Score")
 const Problem = require("../models/Problem")
 const User = require("../models/User")
 
-scoreRouter.get("/read", async (req, res, next) => {
+scoreRouter.get("/", async (req, res, next) => {
   try {
     const { Result, RefProblem, RefUser } = req.query
     let target = {}
@@ -18,7 +18,7 @@ scoreRouter.get("/read", async (req, res, next) => {
     next(err)
   }
 })
-scoreRouter.get("/read/:id", async (req, res, next) => {
+scoreRouter.get("/:id", async (req, res, next) => {
   try {
     const score = await Score.findById(req.params.id)
     if (score) return res.status(200).json({ success: true, score })
@@ -27,7 +27,7 @@ scoreRouter.get("/read/:id", async (req, res, next) => {
     next(err)
   }
 })
-scoreRouter.post("/create", async (req, res, next) => {
+scoreRouter.post("/", async (req, res, next) => {
   try {
     const { Code, RefProblem } = req.body
     const RefUser = req.user._id
@@ -40,6 +40,10 @@ scoreRouter.post("/create", async (req, res, next) => {
     //business logic
     let Result, Feedback
     //judge code
+    
+    //fs : code -> file
+    //fs : problem -> input, output file
+    //jsshell : execute file with input file and compare wuth output file 
 
     if(Result){
         Feedback = ""

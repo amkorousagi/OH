@@ -12,7 +12,7 @@ userNoAuthRouter.post("/login", async (req, res, next) => {
     if (user) {
       const result = await bcrypt.compare(UserPassword, user.UserPassword)
       if (result) {
-        const token = jwt.sign(user, config.secret, {
+        const token = await jwt.sign(user.toJSON(), config.secret, {
           expiresIn: 60 * 60 * 24 * 3,
         })
         return res.status(200).json({ success: true, token })
@@ -36,7 +36,7 @@ userNoAuthRouter.post("/join", async (req, res, next) => {
     const dup2 = await User.find({ Nickname })
     if (dup1 | dup2) throw new Error("duplicated id or nickname")
 
-    const hashedPassword = bcrypt.hash(UserPassword, saltRounds)
+    const hashedPassword = await bcrypt.hash(UserPassword, saltRounds)
     const user = new User({ ...req.body, UserPassword: hashedPassword })
     const savedUser = await user.save()
     return res.status(201).json({ success: true, savedUser })

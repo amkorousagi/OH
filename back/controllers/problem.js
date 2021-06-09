@@ -2,7 +2,7 @@
 const problemRouter = require("express").Router()
 const Problem = require("../models/Problem")
 
-problemRouter.get("/read", async (req, res, next) => {
+problemRouter.get("/", async (req, res, next) => {
   try {
     const problems = await Problem.find({})
     return res.status(200).json({ success: true, problems })
@@ -10,7 +10,7 @@ problemRouter.get("/read", async (req, res, next) => {
     next(err)
   }
 })
-problemRouter.get("/read/:id", async (req, res, next) => {
+problemRouter.get("/:id", async (req, res, next) => {
   try {
     const problem = await Problem.findById(req.params.id)
     if (problem) return res.status(200).json({ success: true, problem })
@@ -19,7 +19,7 @@ problemRouter.get("/read/:id", async (req, res, next) => {
     next(err)
   }
 })
-problemRouter.post("/create", async (req, res, next) => {
+problemRouter.post("/", async (req, res, next) => {
   try {
     const { Title, Description, TestCase } = req.body
     if (
@@ -45,11 +45,13 @@ problemRouter.post("/create", async (req, res, next) => {
     next(err)
   }
 })
-problemRouter.post("/update/:id", async (req, res, next) => {
+problemRouter.patch("/:id", async (req, res, next) => {
   try {
     const origin = await Problem.findById(req.params.id)
+
     if (!origin) throw new Error("invalid problem id")
-    if (req.user._id !== origin.Writer) throw new Error("not writer")
+    if (req.user._id.toString() != origin.Writer.toString())
+      throw new Error("not writer")
 
     const { Title, Description, TestCase } = req.body
     if (
@@ -79,11 +81,12 @@ problemRouter.post("/update/:id", async (req, res, next) => {
     next(err)
   }
 })
-problemRouter.delete("/delete/:id", async (req, res, next) => {
+problemRouter.delete("/:id", async (req, res, next) => {
   try {
     const origin = await Problem.findById(req.params.id)
     if (!origin) throw new Error("invalid problem id")
-    if (req.user._id !== origin.Writer) throw new Error("not writer")
+    if (req.user._id.toString() !== origin.Writer.toString())
+      throw new Error("not writer")
 
     const deletedProblem = await Problem.findByIdAndDelete(req.params.id)
     if (!deletedProblem) throw new Error("can not delete no problem")

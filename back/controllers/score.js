@@ -2,47 +2,63 @@
 //score
 const scoreRouter = require("express").Router()
 const Score = require("../models/Score")
+const Problem = require("../models/Problem")
+const User = require("../models/User")
 
 scoreRouter.get("/read", async (req, res, next) => {
   try {
-    const { RefPost, ToComment, Writer } = req.query
+    const { Result, RefProblem, RefUser } = req.query
     let target = {}
-    if (RefPost) target.RefPost = RefPost
-    if (ToComment) target.ToComment = ToComment
-    if (Writer) target.Writer = Writer
-    const comments = await Comment.find({ target })
-    if (comments) return res.status(200).json({ success: true, comments })
+    if (Result) target.Result = Result
+    if (RefProblem) target.RefProblem = RefProblem
+    if (RefUser) target.RefUser = RefUser
+    const scores = await Score.find({ target })
+    return res.status(200).json({ success: true, scores })
   } catch (err) {
     next(err)
   }
 })
 scoreRouter.get("/read/:id", async (req, res, next) => {
   try {
-    const comment = await Comment.findById(req.params.id)
-    if (comment) return res.status(200).json({ success: true, comment })
-    else throw new Error("invalid comment id")
+    const score = await Score.findById(req.params.id)
+    if (score) return res.status(200).json({ success: true, score })
+    else throw new Error("invalid score id")
   } catch (err) {
     next(err)
   }
 })
 scoreRouter.post("/create", async (req, res, next) => {
   try {
+    const { Code, RefProblem } = req.body
+    const RefUser = req.user._id
+    if (RefProblem === undefined || Code === undefined) throw new Error("no ref post or code")
+    let target = { Code, RefProblem, RefUser }
+
+    const problem = await Problem.findById(RefProblem)
+    if(!problem) throw new Error("invalid problem ref")
+
     //business logic
-    const { Title, Body, RefPost, ToComment } = req.body
-    if (RefPost === undefined) throw new Error("no ref post")
-    if (Title === undefined || Body === undefined)
-      throw Error("fill tile, body")
-    let target = { Title, Body, RefPost }
-    if (ToComment) target.ToComment = ToComment
-    const Writer = req.user._id
-    target.Writer = Writer
-    const comment = new Comment(target)
-    const savedComment = await comment.save()
-    return res.status(200).json({ success: true, savedComment })
+    let Result, Feedback
+    //judge code
+
+    if(Result){
+        Feedback = ""
+        req.user.SolvedProblem
+    }
+    else{
+        //fill feedback (error message)
+    }
+    
+
+    const score = new Score(target)
+    const savedScore = await score.save()
+    return res.status(200).json({ success: true, savedScore })
   } catch (err) {
     next(err)
   }
 })
+//score cannot update or delete
+/*
 scoreRouter.post("/update/:id", async (req, res, next) => {
   try {
     const origin = await Comment.findById(req.params.id)
@@ -80,5 +96,5 @@ scoreRouter.delete("/delete/:id", async (req, res, next) => {
     next(err)
   }
 })
-
+*/
 module.exports = scoreRouter

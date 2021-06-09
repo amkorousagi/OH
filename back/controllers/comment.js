@@ -10,7 +10,7 @@ commentRouter.get("/read", async (req, res, next) => {
     if (ToComment) target.ToComment = ToComment
     if (Writer) target.Writer = Writer
     const comments = await Comment.find({ target })
-    if (comments) return res.status(200).json({ success: true, comments })
+    return res.status(200).json({ success: true, comments })
   } catch (err) {
     next(err)
   }

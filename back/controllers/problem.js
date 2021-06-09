@@ -5,7 +5,7 @@ const Problem = require("../models/Problem")
 problemRouter.get("/read", async (req, res, next) => {
   try {
     const problems = await Problem.find({})
-    if (problems) return res.status(200).json({ success: true, problems })
+    return res.status(200).json({ success: true, problems })
   } catch (err) {
     next(err)
   }

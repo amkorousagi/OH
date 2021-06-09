@@ -5,7 +5,7 @@ const Post = require("../models/Post")
 postRouter.get("/read", async (req, res, next) => {
   try {
     const posts = await Post.find({})
-    if (posts) return res.status(200).json({ success: true, posts })
+    return res.status(200).json({ success: true, posts })
   } catch (err) {
     next(err)
   }

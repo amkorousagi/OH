@@ -112,19 +112,32 @@
                 left: 60px;
             }
             #mem3 {
+                background-image:url(assets/images/jungmin.jpg);
+                background-size: 100% 100%;
                 left: 120px;
+            }
+            #mem3:hover .mem_text{
+               opacity: 0.65;
+               color:white;
+               transition-duration: 0.7s;
             }
             #mem4 {
                 float: right;
             }
             .mem_text {
+                background: black;
+                opacity: 0;
                 font-size: 25px;
                 font-weight: bold;
                 text-align: center;
-                color: white;
+                /* color: white; */
+                border-radius: 50px;
                 text-decoration: none;
                 position: relative;
-                top: 180px;
+                /* top: 180px; */
+                width: 300px;
+                height: 400px;
+
             }
             * {margin:0;padding:0;box-sizing:border-box;}
             ul, li {list-style:none;}
@@ -268,10 +281,15 @@
         <section class="div-section" id="section2">
             <div class="sec2_title">Hover Us!</div>
             <div class="members">
-                <div class="member" id="mem1"><p class="mem_text">MEMBER1</p></div>
-                <div class="member" id="mem2"><p class="mem_text">MEMBER2</p></div>
-                <div class="member" id="mem3"><p class="mem_text">MEMBER3</p></div>
-                <div class="member" id="mem4"><p class="mem_text">MEMBER4</p></div>
+                <div class="member" id="mem1"><div class="mem_text">MEMBER1</div></div>
+                <div class="member" id="mem2"><div class="mem_text">MEMBER2</div></div>
+                <div class="member" id="mem3">
+                    <div class="mem_text">
+                        박정민</br>
+                        2019112264
+                    </div>
+                </div>
+                <div class="member" id="mem4"><div class="mem_text">MEMBER4</div></div>
             </div>
         </section>
         <!-- section3-->

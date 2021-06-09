@@ -30,9 +30,6 @@ scoreRouter.get("/:id", async (req, res, next) => {
     next(err)
   }
 })
-
-const helper = async () => {}
-
 scoreRouter.post("/", async (req, res, next) => {
   try {
     const { Code, RefProblem } = req.body
@@ -41,7 +38,9 @@ scoreRouter.post("/", async (req, res, next) => {
       throw new Error("no ref post or code")
     let target = { Code, RefProblem, RefUser }
 
-    const problem = await Problem.findById(RefProblem)
+    const problem = await Problem.findByIdAndUpdate(RefProblem, {
+      $inc: { NumOfSubmit: 1 },
+    })
     if (!problem) throw new Error("invalid problem ref")
 
     const score = new Score({ ...target, Result: "waiting" })
@@ -76,6 +75,9 @@ scoreRouter.post("/", async (req, res, next) => {
     }
     if (my_result) {
       Result = "successed"
+      await Problem.findByIdAndUpdate(RefProblem, {
+        $inc: { NumOfCorrect: 1 },
+      })
     }
 
     const finalScore = await Score.findByIdAndUpdate(

@@ -10,6 +10,14 @@ const mongoose = require("mongoose")
 const logger = require("./utils/logger")
 const middleware = require("./utils/middleware")
 
+//import router
+const userNoAuthRouter = require("./controllers/user_no_auth")
+const userRouter = require("./controllers/user")
+const postRouter = require("./controllers/post")
+const problemRouter = require("./controllers/problem")
+const commentRouter = require("./controllers/comment")
+const scoreRouter = require("./controllers/score")
+
 //db connect
 mongoose
   .connect(config.databaseURL, {
@@ -28,6 +36,19 @@ mongoose
 //use routes
 app.use(cors()) // for preventing cross origin error
 app.use(express.json()) // for parsing req.body
+app.use(middleware.errorHandling) // register error handing middleware
+
+app.use("/user_no_auth", userNoAuthRouter)
+
+//for auth
+app.use(middleware.tokenExtractor)
+app.use(middleware.userExtractor)
+
+app.use("/user", userRouter)
+app.use("/post", postRouter)
+app.use("/problem", problemRouter)
+app.use("/comment", commentRouter)
+app.use("/score", scoreRouter)
 
 app.listen(port, "0.0.0.0", () => {
   console.log("OH! backend server listening on port ", port)

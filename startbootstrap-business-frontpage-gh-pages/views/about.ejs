@@ -65,67 +65,194 @@
                 background-color: white;
                 color: darkgoldenrod;
             }
+            #section2 {
+                background-color: darkgoldenrod;
+            }
+            .sec2_title {
+                width: 1400px;
+                margin-right: auto;
+                margin-left: auto;
+                font-size: 50px;
+                color: white;
+                text-align: center;
+                font-weight: bold;
+                position: relative;
+                top: 60px;
+                color: white;
+            }
             .members {
                 width: 1400px;
-                height: 721px;
                 margin-left: auto;
                 margin-right: auto;
+                position: relative;
+                top: 200px;
                 /* background-color: red; */
             }      
             .member {
                 width: 300px;
                 height: 400px;
-                background-color: #212529 !important;
+                background-color: #212529;
                 position: relative;
-                /* float: left; */
                 border-radius: 50px;
                 /* opacity: 0.9; */
                 display: inline-block;
+                /* transition: top; */
+                /* transition-duration: 2s; */
             }
-            #mem1 {
-                top: 40px;
+            .member:hover {
+                animation: show-mem 0.5s ease-out 1 alternate;
+                top: -20px;
+                background-image: url("../public/assets/images/apple.jpg");
+            }
+            @keyframes show-mem {
+                from { top: 0px}
+                to {top: -20px}
             }
             #mem2 {
-                top: 281px;
                 left: 60px;
             }
             #mem3 {
-                top: 40px;
+                background-image:url(assets/images/jungmin.jpg);
+                background-size: 100% 100%;
                 left: 120px;
+            }
+            #mem3:hover .mem_text{
+               opacity: 0.65;
+               color:white;
+               transition-duration: 0.7s;
             }
             #mem4 {
                 float: right;
-                top: 281px;
             }
             .mem_text {
-                font-size: large;
+                background: black;
+                opacity: 0;
+                font-size: 25px;
+                font-weight: bold;
                 text-align: center;
-                color: white;
-                background-color: red;
+                /* color: white; */
+                border-radius: 50px;
                 text-decoration: none;
-                margin-left: auto;
-                margin-right: auto;
+                position: relative;
+                /* top: 180px; */
+                width: 300px;
+                height: 400px;
+
+            }
+            * {margin:0;padding:0;box-sizing:border-box;}
+            ul, li {list-style:none;}
+
+            [name="slide"] {display:none;}
+            .slidebox {
+                /* max-width: 1400px; */
+                width: 1200px;
+                max-height: 100%;
+                margin: 40px auto;
+                text-align:center;
+            }
+            .slidebox img {max-width: 100%; width: 100%;}
+            .slidebox .slidelist {
+                white-space:nowrap;
+                font-size:0;
+                overflow:hidden;
+            }
+            .slidebox .slideitem {
+                position:relative;
+                display:inline-block;
+                vertical-align:middle;
+                width:100%;
+                transition:all .35s;
+            }
+            /* .slidebox .slideitem label {
+                position:absolute;
+                z-index:1;
+                top:50%;
+                transform:translateY(-50%);
+                padding:20px;
+                border-radius:50%;
+                cursor:pointer;
+            } */
+            /* label.left {
+                left:20px;
+                background-color:#5F5F5F;
+                background-image:url('../public/assets/images/left-arrow.png');
+                background-position:center center;
+                background-size:50%;
+                background-repeat:no-repeat;
+            }
+            label.right {
+                right:20px;
+                background-color:#5F5F5F;
+                background-image:url('../public/assets/images/right-arrow.png');
+                background-position:center center;
+                background-size:50%;
+                background-repeat:no-repeat;
+            } */
+
+            /* 페이징 스타일 */
+            /* .paginglist {text-align:center;padding:30px 0;}
+            .paginglist > li {display:inline-block;vertical-align:middle;margin:0 10px;}
+            .paginglist > li > label {display:block;padding:10px 30px;border-radius:10px;background:#ccc;cursor:pointer;}
+            .paginglist > li:hover > label {background:#333;} */
+
+            [id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide01 20s infinite;}
+            [id="slide02"]:checked ~ .slidelist .slideitem {transform:translateX(-100%);animation:slide02 20s infinite;}
+            [id="slide03"]:checked ~ .slidelist .slideitem {transform:translateX(-200%);animation:slide03 20s infinite;}
+            [id="slide04"]:checked ~ .slidelist .slideitem {transform:translateX(-300%);animation:slide04 20s infinite;}
+
+            @keyframes slide01 {
+                0% {left:0%;}
+                /* 23% {left:0%;}
+                25% {left:-100%;}
+                48% {left:-100%;} */
+                50% {left:-200%;}
+                /* 73% {left:-200%;}
+                75% {left:-300%;}
+                98% {left:-300%;} */
+                100% {left:0%;}
+            }
+            @keyframes slide02 {
+                0% {left:0%;}
+                23% {left:0%;}
+                25% {left:-100%;}
+                48% {left:-100%;}
+                50% {left:-200%;}
+                73% {left:-200%;}
+                75% {left:100%;}
+                98% {left:100%;}
+                100% {left:0%;}
+            }
+            @keyframes slide03 {
+                0% {left:0%;}
+                23% {left:0%;}
+                25% {left:-100%;}
+                48% {left:-100%;}
+                50% {left:200%;}
+                73% {left:200%;}
+                75% {left:100%;}
+                98% {left:100%;}
+                100% {left:0%;}
+            }
+            @keyframes slide04 {
+                0% {left:0%;}
+                23% {left:0%;}
+                25% {left:300%;}
+                48% {left:300%;}
+                50% {left:200%;}
+                73% {left:200%;}
+                75% {left:100%;}
+                98% {left:100%;}
+                100% {left:0%;}
+            }   
+            #about {
+                color: white;
+                font-weight: 400;
             }
         </style>
     </head>
     <body>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" href="/">KNU Online Judge</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/problem_list">문제</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/ranking">순위</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/community_list">게시판</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/about">소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <%- include('layouts/navbar'); -%>
 
         <!-- section1-->
         <section class="bg-dark div-section">
@@ -141,15 +268,57 @@
         </section>
         <!-- section2-->
         <section class="div-section" id="section2">
+            <div class="sec2_title">Hover Us!</div>
             <div class="members">
-                <div class="member" id="mem1"><a href="#" class="mem_text">member1</a></div>
-                <div class="member" id="mem2"><a href="#" class="mem_text">member2</a></div>
-                <div class="member" id="mem3"><a href="#" class="mem_text">member3</a></div>
-                <div class="member" id="mem4"><a href="#" class="mem_text">member4</a></div>
+                <div class="member" id="mem1"><div class="mem_text">MEMBER1</div></div>
+                <div class="member" id="mem2"><div class="mem_text">MEMBER2</div></div>
+                <div class="member" id="mem3">
+                    <div class="mem_text">
+                        박정민</br>
+                        2019112264
+                    </div>
+                </div>
+                <div class="member" id="mem4"><div class="mem_text">MEMBER4</div></div>
             </div>
         </section>
         <!-- section3-->
-        <section class="div-section"></section>
+        <section class="div-section">
+            <div class="slidebox">
+                <input type="radio" name="slide" id="slide01" checked>
+                <input type="radio" name="slide" id="slide02">
+                <input type="radio" name="slide" id="slide03">
+                <input type="radio" name="slide" id="slide04">
+                <ul class="slidelist">
+                    <li class="slideitem">
+                        <div>
+                            <!-- <label for="slide04" class="left"></label> -->
+                            <!-- <label for="slide02" class="right"></label> -->
+                            <a><img src="/assets/images/test.jpg"></a>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <!-- <label for="slide01" class="left"></label> -->
+                            <!-- <label for="slide03" class="right"></label> -->
+                            <a><img src="/assets/images/test.jpg"></a>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <!-- <label for="slide02" class="left"></label> -->
+                            <!-- <label for="slide04" class="right"></label> -->
+                            <a><img src="/assets/images/test.jpg"></a>
+                        </div>
+                    </li>
+                    <li class="slideitem">
+                        <div>
+                            <!-- <label for="slide03" class="left"></label> -->
+                            <!-- <label for="slide01" class="right"></label> -->
+                            <a><img src="/assets/images/test.jpg"></a>
+                        </div>
+                    </li>
+                </ul>
+        </section>
         <!-- section4-->
         <section class="bg-dark div-section"></section>
         <!-- Footer-->

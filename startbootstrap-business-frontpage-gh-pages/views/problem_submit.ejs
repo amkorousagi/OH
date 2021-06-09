@@ -13,99 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        @font-face {
-            font-family: 'NanumBarunGothic';
-            font-style: normal;
-            font-weight: 400;
-            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-            src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-        }
-
-        * {
-            font-family: 'NanumBarunGothic' !important;
-        }
-
-        .title {
-            width: 75%;
-        }
-
-        .detail {
-            display: block;
-            margin: 0 auto;
-            width: 80%;
-            height: 500px;
-            resize: none;
-            position: relative;
-        }
-
-        .submit_table {
-            border-top: 1px solid black;
-            border-collapse: collapse;
-            width: 90%;
-            margin-left: 10%;
-
-        }
-
-        td {
-            border-bottom: 1px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .case {
-
-            display: block;
-            margin: 0 auto;
-            width: 80%;
-            height: 200px;
-            resize: none;
-            position: relative;
-        }
-
-
-        .wrap {
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .button {
-            width: 140px;
-            height: 45px;
-            font-family: 'InfinitySans-RegularA1';
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            font-weight: 500;
-            color: #000;
-            background-color: #fff;
-            border: none;
-            border-radius: 45px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease 0s;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .button:hover {
-            background-color: #2EE59D;
-            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-            color: #fff;
-            transform: translateY(-7px);
-        }
-
-        hr {
-            border-top: 1px dashed #bbb;
-            border-bottom: 1px dashed #fff;
-        }
-        
-        .header{
-            margin-left: 5%;
-            font-size: 22px;
-        }
-    </style>
+    <link href="css/prosub.css" rel="stylesheet" />
     <script>
         function textarea_tab(ob) {
             if (event.keyCode == 9) {
@@ -129,10 +37,10 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">문제</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">게시판</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">순위</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">소개</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/problem_list">문제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community_list">게시판</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ranking">순위</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">소개</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
                     <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
                 </ul>
@@ -151,7 +59,7 @@
         </tr>
         <tr>
            <td colspan="6">
-            <h5>난이도&nbsp;&nbsp;
+            <span><h5>난이도&nbsp;&nbsp;</span>
             <input type="radio" name="level" value="high">high&nbsp;&nbsp;
             <input type="radio" name="level" value="middle">middle&nbsp;&nbsp;
             <input type="radio" name="level" value="low">low</h5>
@@ -163,19 +71,23 @@
         <div><textarea onkeydown="textarea_tab(this)" class="detail" placeholder="문제를 입력해주세요."></textarea></br></div>
     </div>
     <div>
-        <h5 class="header">&nbsp 입력</h5>
-        <hr>
-        <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
+        <span><h5 class="header">&nbsp;입력&nbsp;</h5></span>
+        <hr class="case_hr">
+        <div><textarea onkeydown="textarea_tab(this)" class="case" 
+            value="pro_input"></textarea></br></div>
     </div>
     <div>
-        <h5 class="header">&nbsp 출력</h5>
-        <hr>
-        <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
+        <span><h5 class="header">&nbsp;출력&nbsp;</h5></span>
+        <hr class="case_hr">
+        <div><textarea onkeydown="textarea_tab(this)" class="case" 
+            value="pro_output"></textarea></br></div>
     </div>
     <div>
-        <h5 class="header">&nbsp 알고리즘 분류</h5>
-        <hr>
-        <div><textarea onkeydown="textarea_tab(this)" class="case"></textarea></br></div>
+        <span><h5 class="header">&nbsp;알고리즘 분류&nbsp;</h5></span>
+        <hr class="case_hr">
+        <div><textarea onkeydown="textarea_tab(this)" class="case" 
+            value="pro_sort"></textarea></br></div>
+
     </div>
     <div class="wrap">
         <button class="button">Add</button>

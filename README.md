@@ -56,6 +56,7 @@ return success, created problem
 ### Read
 method : GET  
 path : http://localhost:3001/problem  
+query-string : { Title, Writer }
 
 return success, problems  
 
@@ -90,6 +91,7 @@ return success, created post
 ### Read
 method : GET  
 path : http://localhost:3001/post  
+query-string : { Title, Writer }
 
 return success, posts  
 
@@ -123,7 +125,7 @@ return success, created comment
 ### Read
 method : GET  
 path : http://localhost:3001/comment  
-
+query-string : { RefPost, ToComment, Writer } 
 return success, comments  
 
 ### Update

@@ -40,10 +40,11 @@
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < 100; i++) { %>
+            <% for (var i = 0; i < problems.length; i++) { %>
             <tr>
-              <td>0001</td>
-              <td><a href="#">A+B</a></td>
+              <td><%= i %></td>
+              <!-- <td>문제입니다.</td> -->
+              <td><%= problems[i].Title %></td>
               <td>high</td>
               <td>#greedy</td>
               <td>100000</td>

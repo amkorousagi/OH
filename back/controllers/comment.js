@@ -9,7 +9,7 @@ commentRouter.get("/", async (req, res, next) => {
     if (RefPost) target.RefPost = RefPost
     if (ToComment) target.ToComment = ToComment
     if (Writer) target.Writer = Writer
-    const comments = await Comment.find({ target })
+    const comments = await Comment.find(target)
     return res.status(200).json({ success: true, comments })
   } catch (err) {
     next(err)

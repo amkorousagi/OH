@@ -4,7 +4,11 @@ const Post = require("../models/Post")
 
 postRouter.get("/", async (req, res, next) => {
   try {
-    const posts = await Post.find({})
+    const { Title, Writer } = req.query
+    let target = {}
+    if (Title) target.Title = Title
+    if (Writer) target.Writer = Writer
+    const posts = await Post.find(target)
     return res.status(200).json({ success: true, posts })
   } catch (err) {
     next(err)

@@ -4,7 +4,11 @@ const Problem = require("../models/Problem")
 
 problemRouter.get("/", async (req, res, next) => {
   try {
-    const problems = await Problem.find({})
+    const { Title, Writer } = req.query
+    let target = {}
+    if (Title) target.Title = Title
+    if (Writer) target.Writer = Writer
+    const problems = await Problem.find(target)
     return res.status(200).json({ success: true, problems })
   } catch (err) {
     next(err)
@@ -40,6 +44,7 @@ problemRouter.post("/", async (req, res, next) => {
       NumOfSubmit,
     })
     const savedProblem = await problem.save()
+ 
     return res.status(200).json({ success: true, savedProblem })
   } catch (err) {
     next(err)
@@ -76,6 +81,7 @@ problemRouter.patch("/:id", async (req, res, next) => {
       { new: true }
     )
     if (!updatedProblem) throw new Error("invalid problem id when updating")
+
     return res.status(200).json({ success: true, updatedProblem })
   } catch (err) {
     next(err)

@@ -3,6 +3,7 @@
 const scoreRouter = require("express").Router()
 const Score = require("../models/Score")
 const Problem = require("../models/Problem")
+const User = require("../models/User")
 const fs = require("fs")
 const util = require("util")
 const { PythonShell } = require("python-shell")
@@ -75,9 +76,10 @@ scoreRouter.post("/", async (req, res, next) => {
     }
     if (my_result) {
       Result = "successed"
-      await Problem.findByIdAndUpdate(RefProblem, {
+      const my_problem = await Problem.findByIdAndUpdate(RefProblem, {
         $inc: { NumOfCorrect: 1 },
       })
+      await User.findByIdAndUpdate(req.user._id,{SolvedProblem:req.user.SolvedProblem.concat([my_problem._id])})
     }
 
     const finalScore = await Score.findByIdAndUpdate(

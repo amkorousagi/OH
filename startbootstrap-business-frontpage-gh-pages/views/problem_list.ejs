@@ -47,9 +47,9 @@
               <td><%= problems[i].Title %></td>
               <td>high</td>
               <td>#greedy</td>
-              <td>100000</td>
-              <td>500000</td>
-              <td id="last">20%</td>
+              <td><%= problems[i].Correct %></td>
+              <td><%= problems[i].Submit %></td>
+              <td id="last"><%= problems[i].Rate %></td>
             </tr>
             <% } %>
             </tbody>

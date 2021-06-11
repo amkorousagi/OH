@@ -143,18 +143,4 @@ return success, deleted comment
 
 ## score
 
-### Create
-method : POST  
-path : http://localhost:3001/score  
-body : { Code, RefProblem }  
-
-return success, scores  
-
-### Read
-method : GET
-path : http://localhost:3001/score
-query-string : { Result, RefProblem, RefUser } at least 0  
-return success, scores  
-
-
 ### Comming soon ...

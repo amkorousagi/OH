@@ -27,11 +27,11 @@ app.get('/problem_list', async function(req, res) {
     const data = result.data.problems;
     const problems = [];
     for(var i = 0; i < data.length; i++) {
-        var obj = new Object({Title: data[i].Title, Writer: data[i].Writer});
+        var obj = new Object({Title: data[i].Title, Correct: data[i].NumOfCorrect, Submit: data[i].NumOfSubmit});
+        obj.Rate = obj.Submit ? obj.Submit/obj.Correct : 0;
         problems[i] = obj;
-        console.log(problems[i]);
+        console.log(problems[i].Rate);
     }
-    // console.log(data[0].Title + data[0].Writer);
     res.render('problem_list', {problems});
 })
 

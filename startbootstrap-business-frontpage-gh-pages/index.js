@@ -40,26 +40,27 @@ const getPosts = async function() {
     }
 }
 
-const getUserNickname = async function() {
-    try {
-        const result = await axios.get("http://localhost:3001/user/:id", {headers: {Authorization :"bearer " + 
-    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`}});
-    }catch(error) {
-        console.error(error);
-    }
-    console.log(result);
-}
+// const getUserNickname = async function() {
+//     try {
+//         const result = await axios.get("http://localhost:3001/user/:id", {headers: {Authorization :"bearer " + 
+//     `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`}});
+//     }catch(error) {
+//         console.error(error);
+//     }
+//     console.log(result);
+// }
 
 app.get('/problem_list', async function(req, res) {
     const result = await getProblems();
     const problems = result.data.problems;
+    console.log(problems)
     res.render('problem_list', {problems});
 })
 
 app.get('/community_list', async function(req, res) {
     const result = await getPosts();
     const posts = result.data.posts;
-    getUserNickname
+    // getUserNickname();
     res.render('community_list', {posts})
 })
 
@@ -83,7 +84,7 @@ app.get('/community_submit', function(req, res) {
     res.render('community_submit')
 })
 
-app.get('/community_detail', function(req, res) {
+app.get('/community_detail', async function(req, res) {
     const result = await getProblems();
     const data = result.data.problems;
     res.render('problem_detail', {data});

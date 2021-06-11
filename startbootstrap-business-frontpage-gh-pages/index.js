@@ -84,14 +84,14 @@ app.get('/problem_submit', function(req, res) {
     res.render('problem_submit')
 })
 
-app.get('/community_submit', function(req, res) {
+app.get('/community_submit', async function(req, res) {
     res.render('community_submit')
 })
 
-app.get('/community_detail', function(req, res) {
-    const result = await getProblems();
-    const data = result.data.problems;
-    res.render('problem_detail', {data});
+app.get('/community_detail', async function(req, res) {
+    const result = await getPosts();
+    const data = result.data.post;
+    res.render('community_detail', {data});
 })
 
 app.get('/login', function(req, res) {

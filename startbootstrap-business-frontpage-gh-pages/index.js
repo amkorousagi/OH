@@ -15,8 +15,11 @@ app.get('/', function(req, res) {
 
 const getProblems = async function() {
     try {
-        return await axios.get("http://localhost:3001/problem", {headers: {Authorization :"bearer " + 
+        console.log("ddfd")
+        const res =  await axios.get("http://localhost:3001/problem", {headers: {Authorization :"bearer " + 
     `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`}});
+    console.log(res)
+    return res
     }catch(error) {
         console.error(error);
     }
@@ -76,12 +79,17 @@ app.get('/about', function(req, res) {
     res.render('about')
 })
 
-app.get('/problem_submit', function(req, res) {
-    res.render('problem_submit')
+app.get('/problem_submit', async function(req, res) {
+    const result = await getProblems();
+    const data = result.data.problems;
+    console.log("fdfd")
+    res.render('problem_submit',{data})
 })
 
 app.get('/community_submit', async function(req, res) {
-    res.render('community_submit')
+    const result = await getPosts();
+    const data = result.data.post;
+    res.render('community_submit',{data})
 })
 
 app.get('/community_detail', async function(req, res) {
@@ -91,8 +99,10 @@ app.get('/community_detail', async function(req, res) {
 
 })
 
-app.get('/problem_detail', function(req, res) {
-    res.render('problem_detail')
+app.get('/problem_detail', async function(req, res) {
+    const result = await getProblems();
+    const data = result.data.prolems;
+    res.render('problem_detail', {data})
 })
 
 app.get('/login', function(req, res) {

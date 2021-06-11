@@ -82,7 +82,6 @@ app.get('/about', function(req, res) {
 app.get('/problem_submit', async function(req, res) {
     const result = await getProblems();
     const data = result.data.problems;
-    console.log("fdfd")
     res.render('problem_submit',{data})
 })
 

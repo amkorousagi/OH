@@ -14,15 +14,42 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/comsub.css" rel="stylesheet" />
+    <script src="jquery-3.6.0.min.js"></script>
     <script>
-        function textarea_tab(ob) {
-            if (event.keyCode == 9) {
-                ob.focus();
-                space = "    ";
-                ob.selection = document.selection.createRange();
-                ob.selection.text = space;
-                event.returnValue = false;
-            }
+        function request() {
+            const title = document.getElementById("com_title").value;
+            const cont = document.getElementById("content").value;
+            const obj = { Title: title, Body: cont };
+            console.log(obj);
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:3001/post",
+                accepts: "application/json",
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data)
+                    if (data) {
+                        alert("글이 작성되었습니다.");
+                        window.open('/community_list', '', '_self')
+                    }
+                    else {
+                        alert("작성오류");
+                    }
+                },
+                error: function (a, b, c) {
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                },
+                beforeSend: function (xhr) {
+                    /* Authorization header */
+                    xhr.setRequestHeader("Authorization", "bearer " + `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`);
+
+                }
+            });
+
         }
     </script>
 </head>
@@ -51,34 +78,27 @@
     <h2>&nbsp; 게시판 글쓰기</h2>
     <hr>
     <!--table-->
-    <table class="submit_table">
-        <tr>
-            <td>
-                <h4>제목</h4>
-            </td>
-            <td colspan="5" id="title">
-                <input size="100px" type="text">
-            </td>
-        </tr>
-        <tr>
-            <td id="pro_num">
-                <h4>문제번호</h4>
-            </td>
-            <td><input type="number" value="com_number"></td>
-        </tr>
-    </table>
+    <form>
+        <table class="submit_table">
+            <tr>
+                <td>
+                    <h4>제목</h4>
+                </td>
+                <td colspan="5" id="title">
+                    <input size="100px" type="text" id="com_title" value="">
+                </td>
+            </tr>
+        </table>
+        </br>
+        <div>
+            <div><textarea class="detail" id="content" value="" placeholder="내용을 입력해주세요."></textarea></br></div>
+        </div>
+        </br>
+        <div class="wrap">
+            <button type="button" class="button" onclick="request()">Add</button>
+        </div>
     </br>
-    <div>
-        <div><textarea onkeydown="textarea_tab(this)" class="detail" placeholder="내용을 입력해주세요."></textarea></br></div>
-    </div>
-    </br>
-    <div class="wrap">
-        <button class="button">Add</button>
-    </div></br>
-    <table class="reply_table">
-        <tr>
-        </tr>
-    </table>
+    </form>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-5">

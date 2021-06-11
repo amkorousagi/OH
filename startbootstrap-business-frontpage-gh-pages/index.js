@@ -2,6 +2,9 @@ const express = require('express')
 const path = require('path')
 const app = new express()
 const ejs = require('ejs')
+const axios = require('axios')
+
+
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
@@ -10,8 +13,26 @@ app.get('/', function(req, res) {
     res.render('index')
 })
 
-app.get('/problem_list', function(req, res) {
-    res.render('problem_list')
+const getProblems = async function() {
+    try {
+        return await axios.get("http://localhost:3001/problem", {headers: {Authorization :"bearer " + 
+    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMwNWQ2YmU2YzAxZjQwZTc3NzVjZTUiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkRGdldTBReTRNall2MHZRV0xseVM2ZXRaMHlmWjhzcFlNdFVadFdocXc5elp1TE05a1ZMZkMiLCJOaWNrbmFtZSI6ImFta29ybyIsIlNvbHZlZFByb2JsZW0iOltdLCJfX3YiOjAsImlhdCI6MTYyMzIxOTgyMSwiZXhwIjoxNjIzNDc5MDIxfQ.WG9atLITTkZwbTf1RnmAWm31At_Y8-ezGU3zRnBo6lE`}});
+    }catch(error) {
+        console.error(error);
+    }
+}
+
+app.get('/problem_list', async function(req, res) {
+    const result = await getProblems();
+    const data = result.data.problems;
+    const problems = [];
+    for(var i = 0; i < data.length; i++) {
+        var obj = new Object({Title: data[i].Title, Writer: data[i].Writer});
+        problems[i] = obj;
+        console.log(problems[i]);
+    }
+    // console.log(data[0].Title + data[0].Writer);
+    res.render('problem_list', {problems});
 })
 
 app.get('/community_list', function(req, res) {

@@ -40,16 +40,19 @@ const getPosts = async function() {
     }
 }
 
+const getUserNickname = async function() {
+    try {
+        const result = await axios.get("http://localhost:3001/user/:id", {headers: {Authorization :"bearer " + 
+    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMwNWQ2YmU2YzAxZjQwZTc3NzVjZTUiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkRGdldTBReTRNall2MHZRV0xseVM2ZXRaMHlmWjhzcFlNdFVadFdocXc5elp1TE05a1ZMZkMiLCJOaWNrbmFtZSI6ImFta29ybyIsIlNvbHZlZFByb2JsZW0iOltdLCJfX3YiOjAsImlhdCI6MTYyMzIxOTgyMSwiZXhwIjoxNjIzNDc5MDIxfQ.WG9atLITTkZwbTf1RnmAWm31At_Y8-ezGU3zRnBo6lE`}});
+    }catch(error) {
+        console.error(error);
+    }
+    console.log(result);
+}
+
 app.get('/problem_list', async function(req, res) {
     const result = await getProblems();
-    const data = result.data.problems;
-    const problems = [];
-    for(var i = 0; i < data.length; i++) {
-        var obj = new Object({Title: data[i].Title, Difficulty: data[i].Difficulty, Keyword: data[i].Keyword, Correct: data[i].NumOfCorrect, Submit: data[i].NumOfSubmit});
-        obj.Rate = obj.Submit ? obj.Submit/obj.Correct : 0;
-        problems[i] = obj;
-        //console.log(problems[i]);
-    }
+    const problems = result.data.problems;
     res.render('problem_list', {problems});
 })
 app.get('/problem_detail', async function(req, res) {
@@ -60,13 +63,8 @@ app.get('/problem_detail', async function(req, res) {
 
 app.get('/community_list', async function(req, res) {
     const result = await getPosts();
-    const data = result.data.posts;
-    const posts = [];
-    for(var i = 0; i < data.length; i++) {
-        var obj = new Object({Title: data[i].Title, Writer: data[i].Writer});
-        posts[i] = obj;
-    }
-    console.log(posts.Title + posts.Writer);
+    const posts = result.data.posts;
+    getUserNickname();
     res.render('community_list', {posts})
 })
 

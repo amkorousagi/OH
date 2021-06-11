@@ -12,15 +12,14 @@
 }
 
 .detail_table {
-    border-top: 1px solid black;
     border-collapse: collapse;
+    border-top: 0.5px dashed #bbb;
     width: 80%;
     margin-left: 10%;
-
 }
 
 td {
-    border-top: 1px solid black;
+    border-bottom: 0.5px dashed #bbb;
     padding: 10px;
     text-align: left;
 }
@@ -30,8 +29,8 @@ td {
 }
 
 hr {
-    border-top: 1px dashed #bbb;
-    border-bottom: 1px dashed #fff;
+    border-top: 1px dashed #ddd;
+    /* border-bottom: 1px dashed #fff; */
 }
 
 hr.case_hr{

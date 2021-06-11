@@ -4,10 +4,12 @@ const Problem = require("../models/Problem")
 
 problemRouter.get("/", async (req, res, next) => {
   try {
-    const { Title, Writer } = req.query
+    const { Title, Writer, Difficulty, Keyword } = req.query
     let target = {}
     if (Title) target.Title = Title
     if (Writer) target.Writer = Writer
+    if (Difficulty) target.Difficulty = Difficulty
+    if (Keyword) target.Keyword = Keyword
     const problems = await Problem.find(target)
     return res.status(200).json({ success: true, problems })
   } catch (err) {
@@ -25,7 +27,7 @@ problemRouter.get("/:id", async (req, res, next) => {
 })
 problemRouter.post("/", async (req, res, next) => {
   try {
-    const { Title, Description, TestCase } = req.body
+    const { Title, Description, TestCase, Difficulty, Keyword } = req.body
     if (
       Title === undefined ||
       Description === undefined ||
@@ -40,11 +42,13 @@ problemRouter.post("/", async (req, res, next) => {
       Description,
       TestCase,
       Writer,
+      Difficulty,
+      Keyword,
       NumOfCorrect,
       NumOfSubmit,
     })
     const savedProblem = await problem.save()
- 
+
     return res.status(200).json({ success: true, savedProblem })
   } catch (err) {
     next(err)
@@ -58,11 +62,13 @@ problemRouter.patch("/:id", async (req, res, next) => {
     if (req.user._id.toString() != origin.Writer.toString())
       throw new Error("not writer")
 
-    const { Title, Description, TestCase } = req.body
+    const { Title, Description, TestCase, Difficulty, Keyword } = req.body
     if (
       Title === undefined &&
       Description === undefined &&
-      TestCase === undefined
+      TestCase === undefined &&
+      Difficulty === undefined &&
+      Keyword === undefined
     )
       throw new Error("plz fill at least one")
     let target = {}
@@ -74,6 +80,12 @@ problemRouter.patch("/:id", async (req, res, next) => {
     }
     if (TestCase) {
       target.TestCase = TestCase
+    }
+    if (Difficulty) {
+      target.Difficulty = Difficulty
+    }
+    if (Keyword) {
+      target.Keyword = Keyword
     }
     const updatedProblem = await Problem.findByIdAndUpdate(
       req.params.id,

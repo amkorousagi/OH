@@ -92,13 +92,13 @@ app.get('/problem_submit', async function(req, res) {
 
 app.get('/community_submit', async function(req, res) {
     const result = await getPosts();
-    const data = result.data.post;
+    const data = result.data.posts;
     res.render('community_submit',{data})
 })
 
 app.get('/community_detail', async function(req, res) {
     const result = await getPosts();
-    const data = result.data.post;
+    const data = result.data.posts;
     res.render('community_detail', {data});
 
 })

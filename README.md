@@ -49,7 +49,7 @@ return success, deleted user (authenticated with token)
 ### Create
 method : POST  
 path : http://localhost:3001/problem  
-body : { Title, Description, TestCase } ; TestCast = [{Input : String, Output: String}]  
+body : { Title, Description, TestCase, Difficulty, Keyword } ; TestCast = [{Input : String, Output: String}]  
 
 return success, created problem  
 

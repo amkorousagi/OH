@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>KNU Judge</title>
+    <title>PROBLEM SUBMIT</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -18,14 +18,13 @@
     <script>
         function request() {
             const title = document.getElementById("pro_title").value;
-            const diff = document.getElementsByName("level").value;
+            const diff = document.getElementById("level").value;
             const cont = document.getElementById("pro_content").value;
             const input = document.getElementById("pro_input").value;
             const output = document.getElementById("pro_output").value;
             const keyword = document.getElementById("pro_alg").value;
             const obj = {Title:title, Description:cont, Difficulty:diff,
                     Keyword:keyword, TestCase:[{Input:input, Output:output}]};
-                    
             console.log(obj);
             $.ajax({
                 type:'POST',
@@ -35,7 +34,6 @@
                 contentType: "application/json; charset=utf-8",
                 dataType:"json",
                 success:function(data){
-                    console.log(data)
                     if(data){
                         alert("문제가 출제되었습니다.");
                     }
@@ -62,24 +60,7 @@
 
 <body>
     <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="#" onclick="location.href='/'">KNU Online Judge</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/problem_list">문제</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/community_list">게시판</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/ranking">순위</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">소개</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">로그인</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/register">회원가입</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <%- include('layouts/navbar'); -%>
     </br>
     <h2>&nbsp; 문제 출제하기</h2>
     <hr></br>
@@ -90,7 +71,7 @@
                     <h4>제목</h4>
                 </td>
                 <td colspan="5" id="title">
-                    <input size="100px" type="text" id="pro_title" value="title">
+                    <input size="100px" type="text" id="pro_title" value="">
                 </td>
             </tr>
             <tr>
@@ -98,15 +79,15 @@
                     <span>
                         <h5>난이도&nbsp;&nbsp;
                     </span>
-                    <input type="radio" name="level" value="high">high&nbsp;&nbsp;
-                    <input type="radio" name="level" value="middle">middle&nbsp;&nbsp;
-                    <input type="radio" name="level" value="low">low</h5>
+                    <input type="radio" id="level" name="level" value="high">high&nbsp;&nbsp;
+                    <input type="radio" id="level" name="level" value="middle">middle&nbsp;&nbsp;
+                    <input type="radio" id="level" name="level" value="low">low</h5>
                 </td>
             </tr>
         </table>
         </br>
         <div>
-            <div><textarea class="detail" id="pro_content" value="content" placeholder="문제를 입력해주세요."></textarea></br>
+            <div><textarea class="detail" id="pro_content" value="" placeholder="문제를 입력해주세요."></textarea></br>
             </div>
         </div>
         <div>
@@ -114,21 +95,21 @@
                 <h5 class="header">&nbsp;입력&nbsp;</h5>
             </span>
             <hr class="case_hr">
-            <div><textarea class="case" id="pro_input" value="input"></textarea></br></div>
+            <div><textarea class="case" id="pro_input" value=""></textarea></br></div>
         </div>
         <div>
             <span>
                 <h5 class="header">&nbsp;출력&nbsp;</h5>
             </span>
             <hr class="case_hr">
-            <div><textarea class="case" value="output" id="pro_output"></textarea></br></div>
+            <div><textarea class="case" value="" id="pro_output"></textarea></br></div>
         </div>
         <div>
             <span>
                 <h5 class="header">&nbsp;알고리즘 분류&nbsp;</h5>
             </span>
             <hr class="case_hr">
-            <div><textarea class="case" value="alg" id="pro_alg"></textarea></br></div>
+            <div><textarea class="case" value="" id="pro_alg"></textarea></br></div>
 
         </div>
         <div class="wrap">

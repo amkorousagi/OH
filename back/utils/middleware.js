@@ -34,13 +34,12 @@ const userExtractor = async (req, res, next) => {
 }
 
 const errorHandling = (err, req, res, next) => {
-  console.log("im error log")
-  console.err(err)
-  return res.status(500).end({ success: false })
+  console.log(err)
+  return res.status(500).json({ success: false, error: err.toString() })
 }
 
 const unknownEndpoint = (req, res) => {
-  res.status(404).send({ success:false, error: "unknown endpoint" })
+  res.status(404).send({ success: false, error: "unknown endpoint" })
 }
 module.exports = {
   tokenExtractor,

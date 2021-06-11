@@ -6,6 +6,7 @@ const CommentSchema = new mongoose.Schema({
     Body :{type:String, required:true},
     RefPost : {type:mongoose.Schema.Types.ObjectId, ref:"Post", required:true},
     ToComment : {type:mongoose.Schema.Types.ObjectId, ref:"Comment"},
+    Date : {type: Date},
     Writer : {type:mongoose.Types.ObjectId, ref:"User", required:true}
 })
 

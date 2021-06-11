@@ -44,7 +44,7 @@ scoreRouter.post("/", async (req, res, next) => {
     })
     if (!problem) throw new Error("invalid problem ref")
 
-    const score = new Score({ ...target, Result: "waiting" })
+    const score = new Score({ ...target, Result: "waiting", Date: new Date() })
     const tempScore = await score.save()
 
     //business logic

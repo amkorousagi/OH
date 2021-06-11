@@ -7,6 +7,7 @@ const ProblemSchema = new mongoose.Schema({
   Writer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   Difficulty : {type:String},
   Keyword : {type:[String]},
+  Date : {type: Date},
   NumOfCorrect: Number,
   NumOfSubmit: Number,
 })

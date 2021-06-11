@@ -34,7 +34,7 @@ commentRouter.post("/", async (req, res, next) => {
     if (ToComment) target.ToComment = ToComment
     const Writer = req.user._id
     target.Writer = Writer
-    const comment = new Comment(target)
+    const comment = new Comment({ ...target, Date: new Date() })
     const savedComment = await comment.save()
     return res.status(200).json({ success: true, savedComment })
   } catch (err) {

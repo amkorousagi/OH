@@ -37,7 +37,7 @@ userNoAuthRouter.post("/join", async (req, res, next) => {
     if (dup1 | dup2) throw new Error("duplicated id or nickname")
 
     const hashedPassword = await bcrypt.hash(UserPassword, saltRounds)
-    const user = new User({ ...req.body, UserPassword: hashedPassword })
+    const user = new User({ ...req.body, UserPassword: hashedPassword, Date: new Date() })
     const savedUser = await user.save()
     return res.status(201).json({ success: true, savedUser })
   } catch (err) {

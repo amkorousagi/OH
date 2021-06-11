@@ -4,6 +4,7 @@ const UserSchema = new mongoose.Schema({
     UserId : {type:String, required:true,unique:true},
     UserPassword : {type:String, required:true},
     Nickname : {type:String, required:true},
+    Date : {type: Date},
     SolvedProblem : [{ProblemId:String,Result:Boolean}]
 })
 module.exports = mongoose.model("User",UserSchema)

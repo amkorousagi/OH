@@ -5,6 +5,7 @@ const ScoreSchema = new mongoose.Schema({
     Feedback : {type:String},
     Code : {type:String},
     RefProblem : {type:mongoose.Schema.Types.ObjectId,ref:"Problem", required:true},
+    Date : {type: Date},
     RefUser : {type:mongoose.Schema.Types.ObjectId,ref:"User", required:true}
 })
 

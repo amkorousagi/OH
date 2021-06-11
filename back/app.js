@@ -36,7 +36,6 @@ mongoose
 //use routes
 app.use(cors()) // for preventing cross origin error
 app.use(express.json()) // for parsing req.body
-app.use(middleware.errorHandling) // register error handing middleware
 
 app.use("/user_no_auth", userNoAuthRouter)
 
@@ -51,6 +50,7 @@ app.use("/comment", commentRouter)
 app.use("/score", scoreRouter)
 
 app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandling) // register error handing middleware
 
 app.listen(config.port, "0.0.0.0", () => {
   console.log("OH! backend server listening on port ", config.port)

@@ -37,6 +37,7 @@ postRouter.post("/", async (req, res, next) => {
       Body,
       Writer,
       NumOfView,
+      Date: new Date()
     })
     const savedPost = await post.save()
     return res.status(200).json({ success: true, savedPost })

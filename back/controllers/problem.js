@@ -46,6 +46,7 @@ problemRouter.post("/", async (req, res, next) => {
       Keyword,
       NumOfCorrect,
       NumOfSubmit,
+      Date: new Date(),
     })
     const savedProblem = await problem.save()
 

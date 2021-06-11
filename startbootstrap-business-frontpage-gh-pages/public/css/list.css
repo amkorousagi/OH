@@ -59,9 +59,9 @@ table.list-table a:hover{text-decoration: underline;}
 
 table.list-table #c_num {width: 10%;}
 table.list-table #c_title {width: 50%;}
-table.list-table #category {width: 10%;}
 table.list-table #writer {width: 15%;}
 table.list-table #date {width: 15%;}
+table.list-table #viewrs {width: 10%;}
 
 table.list-table #rank {width: 5%;}
 table.list-table #user_id {width: 17%;}

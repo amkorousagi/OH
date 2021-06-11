@@ -20,6 +20,38 @@
             font-weight: 400;
         }
     </style>
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        function onrequest() {
+            const id = document.getElementById('login_user_id').value;
+            const password = document.getElementById('login_password').value;
+            const password_check = document.getElementById('login_password_check').value;
+            const data = {
+                    UserId: id,
+                    UserPassword: password,
+                    Nickname: "test"
+                };
+            console.log(JSON.stringify(data));
+            $.ajax({
+                type: "POST",
+                accepts: "application/json",
+                contentType: "application/json; charset=utf-8",
+                url: 'http://localhost:3001/user_no_auth/join', 
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                    window.open('/', 'home','_self');
+                },
+                error: function(a,b,c){
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
@@ -41,23 +73,22 @@
                                 <p class="mb-5">가입 후 아이디는 변경할 수 없습니다.</p>
                                 <hr>
                             </div>
-                            <form class="row gx-5 justify-content-center mb-5" action="" method="POST">
+                            <form class="row gx-5 justify-content-center mb-5">
                                 <div class="col-lg-0">
                                     <form>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="login_user_id" type="text" autofocus="autofocus"
-                                                placeholder="아이디">
+                                            <input class="form-control" id="login_user_id" type="text" autofocus="autofocus" placeholder="아이디" value="">
                                             <label for="login_user_id">아이디</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="login_password" type="password" placeholder="비밀번호">
+                                            <input class="form-control" id="login_password" type="password" placeholder="비밀번호" value="">
                                             <label for="login_password">비밀번호</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="login_password" type="password" placeholder="비밀번호">
+                                            <input class="form-control" id="login_password_check" type="password" placeholder="비밀번호" value="">
                                             <label for="login_password">비밀번호(확인)</label>
                                         </div>
-                                        <div class="d-grid"><button class="btn btn-primary btn-lg" type="submit">회원가입</button></div>
+                                        <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">회원가입</button></div>
                                     </form>
                                 </div>
                             </form>

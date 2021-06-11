@@ -14,6 +14,18 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/list.css" rel="stylesheet" />
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -63,7 +75,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card mb-5 mb-xl-0">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold" id="abc">153</div>
+                            <div class="display-4 fw-bold counter">153</div>
                             <div class="text-muted">전체 문제</div>
                         </div>
                     </div>
@@ -72,7 +84,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card mb-5 mb-xl-0">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold">13</div>
+                            <div class="display-4 fw-bold counter">13</div>
                             <div class="text-muted">전체 게시글</div>
                         </div>
                     </div>
@@ -81,7 +93,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold">35</div>
+                            <div class="display-4 fw-bold counter">35</div>
                             <div class="text-muted">전체 멤버</div>
                         </div>
                     </div>

@@ -5,6 +5,8 @@ const ProblemSchema = new mongoose.Schema({
   Description: { type: String, required: true },
   TestCase: {type:[{ Input: String, Output: String }], required: true},
   Writer: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  Difficulty : {type:String},
+  Keyword : {type:[String]},
   NumOfCorrect: Number,
   NumOfSubmit: Number,
 })

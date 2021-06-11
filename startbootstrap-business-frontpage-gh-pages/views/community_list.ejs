@@ -32,19 +32,19 @@
             <tr>
                 <th id="c_num">글 번호</th>
                 <th id="c_title">제목</th>
-                <th id="category">카테고리</th>
                 <th id="writer">글쓴이</th>
                 <th id="date">작성일</th>
+                <th id="viewrs">조회수</th>
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < posts.length; i++) { %>
+            <% for (var i = posts.length-1; i >= 0; i--) { %>
             <tr>
-                <td><%= i+1 %></td>
+                <td><%= posts.length-i %></td>
                 <td><a href="#"><%= posts[i].Title %></a></td>
-                <td>질문</td>
                 <td><%= posts[i].Writer %></td>
-                <td>2021-05-26</td>
+                <td><%= posts[i].Date.substring(0, 10) %></td>
+                <td><%= posts[i].NumOfView %></td>
             </tr>
             <% } %>
             </tbody>

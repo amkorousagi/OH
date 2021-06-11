@@ -42,13 +42,13 @@
             <tbody>
             <% for (var i = 0; i < problems.length; i++) { %>
             <tr>
-              <td><%= i %></td>
+              <td><%= i + 1 %></td>
               <!-- <td>문제입니다.</td> -->
               <td><%= problems[i].Title %></td>
               <td><%= problems[i].Difficulty %></td>
               <td><%= problems[i].Keyword %></td>
-              <td><%= problems[i].Correct %></td>
-              <td><%= problems[i].Submit %></td>
+              <td><%= problems[i].NumOfCorrect %></td>
+              <td><%= problems[i].NumOfSubmit %></td>
               <td id="last"><%= problems[i].Rate %></td>
             </tr>
             <% } %>

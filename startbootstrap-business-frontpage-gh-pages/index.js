@@ -84,7 +84,9 @@ app.get('/community_submit', function(req, res) {
 })
 
 app.get('/community_detail', function(req, res) {
-    res.render('community_detail')
+    const result = await getProblems();
+    const data = result.data.problems;
+    res.render('problem_detail', {data});
 })
 
 app.get('/problem_detail', function(req, res) {

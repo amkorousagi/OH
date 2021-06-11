@@ -22,10 +22,10 @@ const getProblems = async function() {
     }
 }
 
-const getRanks = async function() {
+const getUsers = async function() {
     try {
         return await axios.get("http://localhost:3001/user", {headers: {Authorization :"bearer " + 
-    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMwNWQ2YmU2YzAxZjQwZTc3NzVjZTUiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkRGdldTBReTRNall2MHZRV0xseVM2ZXRaMHlmWjhzcFlNdFVadFdocXc5elp1TE05a1ZMZkMiLCJOaWNrbmFtZSI6ImFta29ybyIsIlNvbHZlZFByb2JsZW0iOltdLCJfX3YiOjAsImlhdCI6MTYyMzIxOTgyMSwiZXhwIjoxNjIzNDc5MDIxfQ.WG9atLITTkZwbTf1RnmAWm31At_Y8-ezGU3zRnBo6lE`}});
+    `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`}});
     }catch(error) {
         console.error(error);
     }
@@ -69,16 +69,18 @@ app.get('/community_list', async function(req, res) {
     const posts = result.data.posts;
     // const result1 = getUserNickname();
     // console.log(result1.data);
-    // console.log(posts[0].Date.substring(0, 10));
+    console.log(posts[0].Date.substring(0, 10));
     res.render('community_list', {posts})
 })
 
 app.get('/ranking', async function(req, res) {
-    const result = await getRanks();
-    users = result;
-    console.log(users);
-    //users.sort(function(a, b) {a.SolvedProblem.length - b.SolvedProblem.length;})
-    res.render('ranking')
+    const result = await getUsers();
+    users = result.data.user;
+    // console.log(users);
+    // console.log("sort 전 " + users);
+    // users.sort(function(a, b) {a.SolvedProblem.length - b.SolvedProblem.length;})
+    // console.log("sort 후 "+ users);
+    res.render('ranking', {users})
 })
 
 app.get('/about', function(req, res) {

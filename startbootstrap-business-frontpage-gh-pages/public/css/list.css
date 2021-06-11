@@ -54,7 +54,7 @@ table.list-table #class {width: 20%;}
 table.list-table #correct_num {width: 8%;}
 table.list-table #submit {width: 8%;}
 table.list-table #correct_rate {width: 8%;}
-table.list-table a{text-decoration: none;}
+table.list-table a{text-decoration: none; color: darkgoldenrod;}
 table.list-table a:hover{text-decoration: underline;}
 
 table.list-table #c_num {width: 10%;}

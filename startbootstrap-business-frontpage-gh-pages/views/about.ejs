@@ -80,12 +80,19 @@
                 top: 60px;
                 color: white;
             }
+            .sec2_title p {
+                position: relative;
+                top: 20px;
+                color: #212529;
+                font-size: 30px;
+                font-weight: 500px;
+            }
             .members {
                 width: 1400px;
                 margin-left: auto;
                 margin-right: auto;
                 position: relative;
-                top: 200px;
+                top: 150px;
                 /* background-color: red; */
             }      
             .member {
@@ -94,38 +101,40 @@
                 background-color: #212529;
                 position: relative;
                 border-radius: 50px;
-                /* opacity: 0.9; */
                 display: inline-block;
-                /* transition: top; */
-                /* transition-duration: 2s; */
             }
             .member:hover {
                 animation: show-mem 0.5s ease-out 1 alternate;
                 top: -20px;
-                background-image: url("../public/assets/images/apple.jpg");
             }
             @keyframes show-mem {
                 from { top: 0px}
                 to {top: -20px}
             }
             #mem1 {
+                background-image: url("/assets/images/박세찬.jpg");
+                background-size: 100% 100%;
                 left: 0px;
             }
             #mem2 {
+                background-image: url("/assets/images/박재완.jpg");
+                background-size: 100% 100%;
                 left: 60px;
             }
             #mem3 {
-                background-image:url(assets/images/jungmin.jpg);
+                background-image:url("/assets/images/박정민.jpg");
                 background-size: 100% 100%;
                 left: 120px;
             }
-            #mem3:hover .mem_text{
+            #mem4 {
+                background-image: url("/assets/images/황아영.jpg");
+                background-size: 100% 100%;
+                left: 180px;
+            }
+            .member:hover .mem_text{
                opacity: 0.65;
                color:white;
                transition-duration: 0.7s;
-            }
-            #mem4 {
-                left: 180px;
             }
             .mem_text {
                 background: black;
@@ -133,25 +142,31 @@
                 font-size: 25px;
                 font-weight: bold;
                 text-align: center;
-                /* color: white; */
                 border-radius: 50px;
                 text-decoration: none;
                 position: absolute;
-                /* top: 180px; */
                 width: 300px;
                 height: 400px;
-
+            }
+            .mem_text p {
+                position: relative;
+                top: 90px;
+            }
+            #section4 {
+                background-color: darkgoldenrod;
+                position: relative;
+                top: -40px;
             }
             * {margin:0;padding:0;box-sizing:border-box;}
             ul, li {list-style:none;}
-
             [name="slide"] {display:none;}
             .slidebox {
-                /* max-width: 1400px; */
                 width: 1200px;
                 max-height: 100%;
                 margin: 40px auto;
                 text-align:center;
+                position: relative;
+                top: 100px;
             }
             .slidebox img {max-width: 100%; width: 100%;}
             .slidebox .slidelist {
@@ -164,93 +179,113 @@
                 display:inline-block;
                 vertical-align:middle;
                 width:100%;
-                transition:all .35s;
+                transition:all .25s ease-out;
             }
-            /* .slidebox .slideitem label {
-                position:absolute;
-                z-index:1;
-                top:50%;
-                transform:translateY(-50%);
-                padding:20px;
-                border-radius:50%;
-                cursor:pointer;
-            } */
-            /* label.left {
-                left:20px;
-                background-color:#5F5F5F;
-                background-image:url('../public/assets/images/left-arrow.png');
-                background-position:center center;
-                background-size:50%;
-                background-repeat:no-repeat;
-            }
-            label.right {
-                right:20px;
-                background-color:#5F5F5F;
-                background-image:url('../public/assets/images/right-arrow.png');
-                background-position:center center;
-                background-size:50%;
-                background-repeat:no-repeat;
-            } */
 
-            /* 페이징 스타일 */
-            /* .paginglist {text-align:center;padding:30px 0;}
-            .paginglist > li {display:inline-block;vertical-align:middle;margin:0 10px;}
-            .paginglist > li > label {display:block;padding:10px 30px;border-radius:10px;background:#ccc;cursor:pointer;}
-            .paginglist > li:hover > label {background:#333;} */
-
-            [id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide01 20s infinite;}
-            [id="slide02"]:checked ~ .slidelist .slideitem {transform:translateX(-100%);animation:slide02 20s infinite;}
-            [id="slide03"]:checked ~ .slidelist .slideitem {transform:translateX(-200%);animation:slide03 20s infinite;}
-            [id="slide04"]:checked ~ .slidelist .slideitem {transform:translateX(-300%);animation:slide04 20s infinite;}
+            [id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide01 10s infinite;}
 
             @keyframes slide01 {
                 0% {left:0%;}
-                /* 23% {left:0%;}
-                25% {left:-100%;}
-                48% {left:-100%;} */
-                50% {left:-200%;}
-                /* 73% {left:-200%;}
-                75% {left:-300%;}
-                98% {left:-300%;} */
+                5% {left: 0%;}
+                45% {left: -100%;}
+                50% {left: -100%;}
+                90% {left: -200%;}
+                95% {left: -200%;}
                 100% {left:0%;}
             }
-            @keyframes slide02 {
-                0% {left:0%;}
-                23% {left:0%;}
-                25% {left:-100%;}
-                48% {left:-100%;}
-                50% {left:-200%;}
-                73% {left:-200%;}
-                75% {left:100%;}
-                98% {left:100%;}
-                100% {left:0%;}
+
+            .section {position:relative;height:900px;}
+            .run img {width:100%;}
+            .run {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);max-width:400px;width:100%;animation:updown .5s linear infinite alternate;}
+            .hand1 {position:absolute;z-index:1;top:19.7%;left:45%;width:17%;animation:hand1 1s linear infinite alternate;transform-origin:100% 10%;}
+            .hand2 {position:absolute;z-index:-1;top:19.4%;left:46%;width:16%;animation:hand2 1s linear infinite alternate;transform-origin:100% 20%;}
+            .foot1-1 {position:absolute;z-index:-2;top:45%;left:48.7%;width:22%;animation:foot1-1 1s linear infinite alternate;transform-origin:40% 10%;}
+            .foot1-2 {position:absolute;z-index:-1;top:92%;left:60%;width:121%;animation:foot1-2 2s linear infinite;transform-origin:26% 4%;}
+            .foot1-3 {position:absolute;z-index:1;bottom:0%;right:0%;width:27%;animation: toe1 2s linear infinite;transform-origin:left bottom;}
+            .foot2-1 {position:absolute;z-index:-1;top:45%;left:48.7%;width:22%;animation:foot2-1 1s linear infinite alternate;transform-origin:40% 10%;}
+            .foot2-2 {position:absolute;z-index:-1;top:92%;left:60%;width:121%;animation:foot2-2 2s linear infinite;transform-origin:26% 4%;}
+            .foot2-3 {position:absolute;z-index:1;bottom:0%;right:0%;width:27%;animation: toe2 2s linear infinite;transform-origin:left bottom;}
+
+
+            /* 키프레임 */
+            @keyframes hand1{
+                from {transform:rotate(0);}
+                to {transform:rotate(-60deg);}
             }
-            @keyframes slide03 {
-                0% {left:0%;}
-                23% {left:0%;}
-                25% {left:-100%;}
-                48% {left:-100%;}
-                50% {left:200%;}
-                73% {left:200%;}
-                75% {left:100%;}
-                98% {left:100%;}
-                100% {left:0%;}
+
+            @keyframes hand2{
+                from {transform:rotate(-90deg);}
+                to {transform:rotate(0);}
             }
-            @keyframes slide04 {
-                0% {left:0%;}
-                23% {left:0%;}
-                25% {left:300%;}
-                48% {left:300%;}
-                50% {left:200%;}
-                73% {left:200%;}
-                75% {left:100%;}
-                98% {left:100%;}
-                100% {left:0%;}
-            }   
+
+            @keyframes foot1-1{
+                from {transform:rotate(50deg);}
+                to {transform:rotate(0);}
+            }
+
+            @keyframes foot1-2{
+                from {transform:rotate(67deg);}
+                40% {transform:rotate(50deg);}
+                50% {transform:rotate(0);}
+                90% {transform:rotate(0);}
+                to {transform:rotate(67deg);}
+            }
+
+            @keyframes toe1{
+                from {transform:rotate(0deg);}
+                50% {transform:rotate(0deg);}
+                80% {transform:rotate(-30deg);}
+                90% {transform:rotate(-30deg);}
+                to {transform:rotate(0deg);}
+            }
+
+            @keyframes foot2-1{
+                from {transform:rotate(0);}
+                to {transform:rotate(50deg);}
+            }
+
+            @keyframes foot2-2{
+                from {transform:rotate(0);}
+                40% {transform:rotate(0);}
+                50% {transform:rotate(67deg);}
+                90% {transform:rotate(50deg);}
+                to {transform:rotate(0);}
+            }
+            
+            @keyframes toe2{
+                from {transform:rotate(0deg);}
+                30% {transform:rotate(-30deg);}
+                40% {transform:rotate(-30deg);}
+                50% {transform:rotate(0deg);}
+                to {transform:rotate(0deg);}
+            }
+            
+            @keyframes updown{
+                from {margin-top:-8px;}
+                to {margin-top:0;}
+            }
+            .road {
+                /* background-color: red; */
+                position: absolute;
+                width: 1500px;
+                height: 200px;
+                left: -550px;
+                border-top: 5px dashed white;
+                border-bottom: 5px dashed white;
+                top: 250px;
+            }
+            .road hr {
+                opacity: 1;
+                position: relative;
+                height: 30px;
+                color: white;
+            }
+            
             #about {
                 color: white;
                 font-weight: 400;
             }
+
         </style>
     </head>
     <body>
@@ -271,54 +306,77 @@
         </section>
         <!-- section2-->
         <section class="div-section" id="section2">
-            <div class="sec2_title">Hover Us!</div>
+            <div class="sec2_title">Hover Us!
+                <p>Hover it to know who we are :)</p>
+            </div>
             <div class="members">
-                <div class="member" id="mem1"><div class="mem_text">MEMBER1</div></div>
-                <div class="member" id="mem2"><div class="mem_text">MEMBER2</div></div>
-                <div class="member" id="mem3"><div class="mem_text"></br>박정민</br>2019112264</br>프론트엔드💻</div></div>
-                <div class="member" id="mem4"><div class="mem_text">MEMBER4</div></div>
+                <div class="member" id="mem1"><div class="mem_text"><p/><p/>박세찬<p/>2018112379<p/>백엔드💻<p/>Server/DB</div></div>
+                <div class="member" id="mem2"><div class="mem_text"><p/><p/>박재완<p/>2018116373<p/>프론트엔드💻<p/>Home/Users</div></div>
+                <div class="member" id="mem3"><div class="mem_text"><p/><p/>박정민<p/>2019112264<p/>프론트엔드💻<p/>Forms/Descriptions</div></div>
+                <div class="member" id="mem4"><div class="mem_text"><p/><p/>황아영<p/>2019112953<p/>프론트엔드💻<p/>Lists/About</div></div>
             </div>
         </section>
         <!-- section3-->
-        <section class="div-section">
+        <section class="bg-dark div-section">
+            <div class="section">
+                <div class="run">
+                    <!-- 몸전체 이미지 -->
+                    <img src="/assets/images/man.png">
+                    <!-- 팔 -->
+                    <div class="hand1">
+                        <img src="/assets/images/hand1.png">
+                    </div>
+                    <div class="hand2">
+                        <img src="/assets/images/hand1.png">
+                    </div>
+                    <!-- 다리 -->
+                    <div class="foot1-1">
+                        <img src="/assets/images/foot1-1.png">
+                        <div class="foot1-2">
+                            <img src="/assets/images/foot1-2.png">
+                            <div class="foot1-3">
+                                <img src="/assets/images/foot1-3.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot2-1">
+                        <img src="/assets/images/foot2-1.png">
+                        <div class="foot2-2">
+                            <img src="/assets/images/foot2-2.png">
+                            <div class="foot2-3">
+                                <img src="/assets/images/foot2-3.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="road"></div>  
+                </div>
+            </div>
+            
+        </section>
+        <!-- section4-->
+        <section class="div-section" id="section4">
             <div class="slidebox">
                 <input type="radio" name="slide" id="slide01" checked>
                 <input type="radio" name="slide" id="slide02">
                 <input type="radio" name="slide" id="slide03">
-                <input type="radio" name="slide" id="slide04">
                 <ul class="slidelist">
                     <li class="slideitem">
                         <div>
-                            <!-- <label for="slide04" class="left"></label> -->
-                            <!-- <label for="slide02" class="right"></label> -->
                             <a><img src="/assets/images/banner1.png"></a>
                         </div>
                     </li>
                     <li class="slideitem">
                         <div>
-                            <!-- <label for="slide01" class="left"></label> -->
-                            <!-- <label for="slide03" class="right"></label> -->
                             <a><img src="/assets/images/banner2.png"></a>
                         </div>
                     </li>
                     <li class="slideitem">
                         <div>
-                            <!-- <label for="slide02" class="left"></label> -->
-                            <!-- <label for="slide04" class="right"></label> -->
                             <a><img src="/assets/images/banner3.png"></a>
                         </div>
                     </li>
-                    <!-- <li class="slideitem">
-                        <div>
-                            <label for="slide03" class="left"></label> -->
-                            <!-- <label for="slide01" class="right"></label> -->
-                            <!-- <a><img src="/assets/images/test.jpg"></a>
-                        </div>
-                    </li> --> 
                 </ul>
         </section>
-        <!-- section4-->
-        <section class="bg-dark div-section"></section>
         <!-- Footer-->
         <%- include('layouts/footer'); -%>
         <%- include('layouts/scripts'); -%>

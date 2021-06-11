@@ -48,16 +48,21 @@ app.get('/problem_list', async function(req, res) {
         var obj = new Object({Title: data[i].Title, Difficulty: data[i].Difficulty, Keyword: data[i].Keyword, Correct: data[i].NumOfCorrect, Submit: data[i].NumOfSubmit});
         obj.Rate = obj.Submit ? obj.Submit/obj.Correct : 0;
         problems[i] = obj;
-        console.log(problems[i]);
+        //console.log(problems[i]);
     }
     res.render('problem_list', {problems});
 })
 
 app.get('/community_list', async function(req, res) {
     const result = await getPosts();
-    const posts = result.data.posts;
-    console.log(posts);
-    res.render('community_list')
+    const data = result.data.posts;
+    const posts = [];
+    for(var i = 0; i < data.length; i++) {
+        var obj = new Object({Title: data[i].Title, Writer: data[i].Writer});
+        posts[i] = obj;
+    }
+    console.log(posts.Title + posts.Writer);
+    res.render('community_list', {posts})
 })
 
 app.get('/ranking', async function(req, res) {

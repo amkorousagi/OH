@@ -38,12 +38,12 @@
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < 20; i++) { %>
+            <% for (var i = 0; i < posts.length; i++) { %>
             <tr>
-                <td><%- i+1 %></td>
-                <td><a href="#">질문합니다.</a></td>
+                <td><%= i+1 %></td>
+                <td><a href="#"><%= posts[i].Title %></a></td>
                 <td>질문</td>
-                <td>knu_student</td>
+                <td><%= posts[i].Writer %></td>
                 <td>2021-05-26</td>
             </tr>
             <% } %>

@@ -12,60 +12,106 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/comdet.css" rel="stylesheet" />
+    <link href="http://localhost:4000/css/styles.css" rel="stylesheet" />
+    <link href="http://localhost:4000/css/comdet.css" rel="stylesheet" />
+    <script src="http://localhost:4000/jquery-3.6.0.min.js"></script>
+    <script>
+        function request() {
+            let url_string = window.location.href
+            let arr = url_string.split("/")
+            const pro_id = arr[arr.length - 1]
+            const reply = document.getElementById("reply_cont").value;
+            const obj = { ToComment:reply};
+            console.log(obj);
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:3001/comment",
+                accepts: "application/json",
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        console.log(data)
+                    }
+                    else {
+                        alert("작성오류");
+                    }
+                    //window.open('/problem_list', '_self')
+                },
+                error: function (a, b, c) {
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                }
+                // beforeSend: function (xhr) {
+                //     /* Authorization header */
+                //     xhr.setRequestHeader("Authorization", "bearer " + localStorage.getItem("token"));
+
+                // }
+            });
+
+        }
+    </script>
 </head>
 
 <body>
     <!-- Responsive navbar-->
     <%- include('layouts/navbar'); -%>
-    </br>
-    <h2>&nbsp; 게시판 </h2>
-    <hr>
-    <!--table-->
-    <table class="detail_table" col="4" row="5">
-        <tr>
-            <td id="title" width="50">
-                <h4>제목</h4>
-            </td>
-            <td id="content" width="200">
-                <a><%= data.Title %></a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" rowspan="5">
-                <%= data.Body %>
-            </td>
-        </tr>
-    </table>
-    </br></br>
-    <table class="reply_table" col="4">
-        <tr>
-            <td width="200px" colspan="3" class="reply">
-                <textarea class="reply_input" value="reply" placeholder="댓글을 입력해주세요."></textarea>
-            </td>
-            <td>
-                <button type="submit" id="button" class="submit_reply">입력</button>
-            </td>
-        </tr>
-        <% for (var i = 0; i < 5; i++) { %>
+        </br>
+        <h2>&nbsp; 게시판 </h2>
+        <hr>
+        <!--table-->
+        <table class="detail_table" col="4" row="5">
             <tr>
-                <td colspan="6">
-                    <a value="reply_cont" >댓글내용</a>
+                <td id="title" width="50">
+                    <h4>제목</h4>
+                </td>
+                <td id="content" width="200">
+                    <a>
+                        <%= data.Title %>
+                    </a>
                 </td>
             </tr>
-            <% } %>
-    </table>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container px-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
-        </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+            <tr>
+                <td colspan="2" rowspan="5">
+                    <%= data.Body %>
+                </td>
+            </tr>
+        </table>
+        </br></br>
+        <form>
+            <table class="reply_table" col="4" row="2">
+                <tr>
+                    <td colspan="3" class="reply">
+                        <textarea class="reply_input" id="reply_cont" value="reply" placeholder="댓글을 입력해주세요."></textarea>
+                    </td>
+                    <td>
+                        <button type="submit" id="button" class="submit_reply" onclick="request()">입력</button>
+                    </td>
+                </tr>
+                <% for (var i=0; i < 5; i++) { %>
+                <tr>
+                    <td colspan="3" class="reply_cont">
+                        <%= data.ToComment %>
+                    </td>
+                    <td id="writer">
+                        <%= data.Writer %>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </form>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
 </body>
 
 </html>

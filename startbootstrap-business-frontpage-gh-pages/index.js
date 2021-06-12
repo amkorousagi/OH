@@ -55,11 +55,16 @@ app.get("/community_submit", async function (req, res) {
 
 app.get("/community_detail/:id", async function (req, res) {
   console.log(req.params.id)
+  const result2 = await axios.get(
+    "http://localhost:3001/comment/" + req.params.id,
+  { headers: { Authorization: "bearer " + req.cookies.token } })
+
   const result = await axios.get(
     "http://localhost:3001/post/" + req.params.id,
     { headers: { Authorization: "bearer " + req.cookies.token } }
   )
   const data = result.data.post
+  const reply = result2.data.comment
   console.log(data)
   res.render("community_detail", { data })
 })

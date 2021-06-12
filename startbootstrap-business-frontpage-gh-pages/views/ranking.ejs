@@ -37,7 +37,7 @@
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < 1; i++) { %>
+            <% for (var i = 0; i < users.length; i++) { %>
             <tr>
               <td>
                   <%= i+1 %>
@@ -47,6 +47,7 @@
               <td><%= users[i].Score %></td>
               <td><%= users[i].NumOfSubmit %></td>
               <td id="last"><%= <%= users[i].Score %>/(users[i].NumOfSubmit) %></td>
+
             </tr>
             <% } %>
             </tbody>

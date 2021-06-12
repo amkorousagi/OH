@@ -16,9 +16,20 @@
     <link href="css/prosub.css" rel="stylesheet" />
     <script src="jquery-3.6.0.min.js"></script>
     <script>
+        var findlevel = null;
+        function checkedhigh(){
+            findlevel = "high";
+        }
+        function checkedmiddle(){
+            findlevel = "middle";
+        }
+        function checkedlow(){
+            findlevel = "low";
+        }
+        findlevel = null;
         function request() {
             const title = document.getElementById("pro_title").value;
-            const diff = document.getElementById("level").value;
+            const diff = findlevel;
             const cont = document.getElementById("pro_content").value;
             const input = document.getElementById("pro_input").value;
             const output = document.getElementById("pro_output").value;
@@ -79,9 +90,9 @@
                     <span>
                         <h5>난이도&nbsp;&nbsp;
                     </span>
-                    <input type="radio" id="level" name="level" value="high">high&nbsp;&nbsp;
-                    <input type="radio" id="level" name="level" value="middle">middle&nbsp;&nbsp;
-                    <input type="radio" id="level" name="level" value="low">low</h5>
+                    <input type="radio" name="level" id="level" value="high" onclick="checkedhigh()">high&nbsp;&nbsp;
+                    <input type="radio" name="level" id="level" value="middle" onclick="checkedmiddle()">middle&nbsp;&nbsp;
+                    <input type="radio" name="level" id="level" value="low" onclick="checkedlow()">low</h5>
                 </td>
             </tr>
         </table>

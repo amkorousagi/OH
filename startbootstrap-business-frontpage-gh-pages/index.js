@@ -69,6 +69,7 @@ app.get("/ranking", async function (req, res) {
     headers: { Authorization: "bearer " + req.cookies.token },
   })
   users = result.data.users
+  users.sort(function(a, b) {a.Score - b.Score})
   console.log(users)
   res.render("ranking", { users })
   

@@ -15,22 +15,30 @@
     <link href="css/styles.css" rel="stylesheet" />
 
     <script src="jquery-3.6.0.min.js"></script>
+    <script src="js/logout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="jquery.counterup.min.js"></script>
-    <script>
-        jQuery(document).ready(function($) {
-            console.log("my token is ",document.cookie)
-            $('.counter').counterUp({
-                delay: 10,
-                time: 1000
-            });
-        });
-    </script>
 </head>
 
 <body>
     <!-- Responsive navbar-->
-    <%- include('layouts/navbar'); -%>
+    <!-- <%- include('layouts/navbar'); -%> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="/">KNU Online Judge</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/problem_list" id="problem">문제</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ranking" id="ranking">순위</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/community_list" id="community">게시판</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about" id="about">소개</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login" id="login" onclick="logout()">로그인</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/register" id="register">회원가입</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <!-- Header-->
     <header class="bg-dark py-5">
         <div class="container px-5">
@@ -128,7 +136,7 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <form>
-                        <div class="form-floacting mb-3">
+                        <div class="form-floating mb-3">
                             <input class="form-control" id="inputName" type="text" placeholder="Enter your name..." />
                             <label for="inputName">Full name</label>
                         </div>
@@ -159,8 +167,6 @@
     </footer>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
 </body>
 
 </html>

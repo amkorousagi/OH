@@ -32,7 +32,7 @@
                     UserPassword: password,
                     Nickname: nickname
                 };
-            console.log(JSON.stringify(data));
+            //console.log(JSON.stringify(data));
             $.ajax({
                 type: "POST",
                 accepts: "application/json",
@@ -47,7 +47,7 @@
                 },
                 error: function(a,b,c){
                     console.log(a,b,c)
-                    alert('이미 있는 id입니다.');
+                    alert('이미 등록된 id입니다.');
                 }
             });
         }

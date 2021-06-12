@@ -29,7 +29,7 @@ userNoAuthRouter.post("/login", async (req, res, next) => {
 })
 userNoAuthRouter.post("/join", async (req, res, next) => {
   try {
-    const { UserId, UserPassword, Nickname,StateMessage } = req.body
+    const { UserId, UserPassword, Nickname, StateMessage } = req.body
     if (UserId === undefined || UserPassword === undefined || Nickname ===undefined)
       throw new Error("plz fill Id, Password, Nickname")
 
@@ -38,7 +38,7 @@ userNoAuthRouter.post("/join", async (req, res, next) => {
     if (dup1 | dup2) throw new Error("duplicated id or nickname")
 
     const hashedPassword = await bcrypt.hash(UserPassword, saltRounds)
-    const user = new User({ ...req.body, UserPassword: hashedPassword, Date: new Date() })
+    const user = new User({ ...req.body, UserPassword: hashedPassword, Date: new Date(),  NumOfSubmit:0})
     const savedUser = await user.save()
     console.log(savedUser)
     return res.status(201).json({ success: true, savedUser })

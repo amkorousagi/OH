@@ -12,83 +12,132 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/prodet.css" rel="stylesheet" />
-    
+    <link href="http://localhost:4000/css/styles.css" rel="stylesheet" />
+    <link href="http://localhost:4000/css/prodet.css" rel="stylesheet" />
+    <script src="http://localhost:4000/jquery-3.6.0.min.js"></script>
+    <script>
+        function request() {
+            let url_string = window.location.href
+            let arr = url_string.split("/")
+            const pro_id = arr[arr.length-1]
+            const code = document.getElementById("code").value;
+            const obj = { Code: code, RefProblem: pro_id };
+            console.log(obj);
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:3001/score",
+                accepts: "application/json",
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data) {
+                        console.log(data)
+                        alert("문제 제출.");
+                    }
+                    else {
+                        alert("작성오류");
+                    }
+                    //window.open('/problem_list', '_self')
+                },
+                error: function (a, b, c) {
+                    console.log(a);
+                    console.log(b);
+                    console.log(c);
+                },
+                beforeSend: function (xhr) {
+                    /* Authorization header */
+                    xhr.setRequestHeader("Authorization", "bearer " + localStorage.getItem("token"));
+
+                }
+            });
+
+        }
+    </script>
 </head>
 
 <body>
     <!-- Responsive navbar-->
     <%- include('layouts/navbar'); -%>
-    </br>
-    <h2>&nbsp; 문제</h2>
-    <hr></br>
-    <table class="detail_table" col="4" row="5">
-        <tr>
-            <td id="title" width="50">
-                <h4>제목</h4>
-            </td>
-            <td id="content" width="200">
-                <a><%= data.Title %></a>
-            </td>
-        </tr>
-        <tr>
-            <td id="title" width="50">
-                <h4>난이도</h4>
-            </td>
-            <td colspan="3">
-                <a id="content" width="200"><%= data.Difficulty %></a>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" rowspan="5">
-                <%= data.Description %>
-            </td>
-        </tr>
-    </table>
-    </br>
-    <div>
-        <span>
-            <h5 class="header">&nbsp;입력&nbsp;</h5>
-        </span>
-        <hr class="case_hr">
-        <a id="case"><%= data.Input %></a></br></br>
-    </div>
-    <div>
-        <span>
-            <h5 class="header">&nbsp;출력&nbsp;</h5>
-        </span>
-        <hr class="case_hr">
-        <a id="case"><%= data.Output %></a></br></br>
-    </div>
-    <div>
-        <span>
-            <h5 class="header">&nbsp;알고리즘 분류&nbsp;</h5>
-        </span>
-        <hr class="case_hr">
-        <a id="case"><%= data.Keyword%></a></br></br>
-    </div>
-    <div>
-        <span>
-            <h5 class="header">&nbsp;파일 업로드&nbsp;</h5>
-        </span>
-        <hr class="case_hr">
-        <input type="file" id="case"></br></br>
-    </div>
-    <div class="wrap">
-        <button class="button">SUBMIT</button>
-    </div>
-    </br>
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container px-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+        </br>
+        <h2>&nbsp; 문제</h2>
+        <hr></br>
+        <table class="detail_table" col="4" row="5">
+            <tr>
+                <td id="title" width="50">
+                    <h4>제목</h4>
+                </td>
+                <td id="content" width="200">
+                    <a>
+                        <%= data.Title %>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td id="title" width="50">
+                    <h4>난이도</h4>
+                </td>
+                <td colspan="3">
+                    <a id="content" width="200">
+                        <%= data.Difficulty %>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="5">
+                    <%= data.Description %>
+                </td>
+            </tr>
+        </table>
+        </br>
+        <div>
+            <span>
+                <h5 class="header">&nbsp;입력 예&nbsp;</h5>
+            </span>
+            <hr class="case_hr">
+            <a id="case">
+                <%= data.TestCase[0].Input %>
+            </a></br></br>
         </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+        <div>
+            <span>
+                <h5 class="header">&nbsp;출력 예&nbsp;</h5>
+            </span>
+            <hr class="case_hr">
+            <a id="case">
+                <%= data.TestCase[0].Output %>
+            </a></br></br>
+        </div>
+        <div>
+            <span>
+                <h5 class="header">&nbsp;알고리즘 분류&nbsp;</h5>
+            </span>
+            <hr class="case_hr">
+            <a id="case">
+                <%= data.Keyword%>
+            </a></br></br>
+        </div>
+        <div>
+            <span>
+                <h5 class="header">&nbsp;code&nbsp;</h5>
+            </span>
+            <hr class="case_hr">
+            <div><textarea class="case" id="code" value=""></textarea></br></div>
+        </div>
+        <div class="wrap">
+            <button  type="button" class="button" onclick="request()">SUBMIT</button>
+        </div>
+        </br>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="http://localhost:4000/js/scripts.js"></script>
 </body>
 
 </html>

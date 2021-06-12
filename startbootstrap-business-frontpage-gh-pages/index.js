@@ -36,9 +36,9 @@ app.get("/problem_detail/:id", async function (req, res) {
     "http://localhost:3001/problem/" + req.params.id,
     { headers: { Authorization: "bearer " + req.cookies.token } }
   )
-  const data = result.data
+  const data = result.data.problem
   console.log("detail " + JSON.stringify(data))
-  res.render("problem_detail", { data })
+  res.render("problem_detail", { data, pro_id:req.params.id })
 })
 
 app.get("/community_list", async function (req, res) {

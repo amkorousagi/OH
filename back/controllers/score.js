@@ -65,11 +65,15 @@ scoreRouter.post("/", async (req, res, next) => {
         })
       })
       pyshell.end((err, code, signal) => {
-        if (err) console.log(err)
+        if (err) {
+          console.log(err)
+          reject(err)
+        }
       })
-      console.log(my_message)
-      console.log(problem.TestCase[i].Input)
-      if (my_message != problem.TestCase[i].Input) {
+      console.log(problem)
+      console.log("mymessage ", my_message)
+      console.log(i,"th output ",problem.TestCase[i].Output)
+      if (my_message != problem.TestCase[i].Output) {
         my_result = false
         Result = "failed"
         break

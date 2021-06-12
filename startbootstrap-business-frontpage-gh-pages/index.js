@@ -13,34 +13,6 @@ app.get("/", function (req, res) {
   res.render("index")
 })
 
-const getProblems = async function () {
-  try {
-    return await axios.get("http://localhost:3001/problem", {
-      headers: {
-        Authorization:
-          "bearer " +
-          `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`,
-      },
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-const getUsers = async function () {
-  try {
-    return await axios.get("http://localhost:3001/user", {
-      headers: {
-        Authorization:
-          "bearer " +
-          `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGMzNTNmYjhmNWM4YzMyMGE5MmUxNmMiLCJVc2VySWQiOiJwc2MiLCJVc2VyUGFzc3dvcmQiOiIkMmIkMTAkZ3dlb1FZRmZleWsxZXpsQ3VjMHZ6dVgubUtVSjJObkozZ3dyN1VLTkpxSnhKTnp2M1VtUzIiLCJOaWNrbmFtZSI6Im15bmlja25hbWUiLCJEYXRlIjoiMjAyMS0wNi0xMVQxMjoxNTo1NS41NzhaIiwiU29sdmVkUHJvYmxlbSI6W10sIl9fdiI6MCwiaWF0IjoxNjIzNDEzNzY3LCJleHAiOjE2MjM2NzI5Njd9.itQzum8hiqma7K3liyiyuwjZ4Q3owGkQldlBx1WQzm4`,
-      },
-    })
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 app.get("/problem_submit", async function (req, res) {
   res.render("problem_submit")
 })
@@ -78,7 +50,7 @@ app.get("/community_list", async function (req, res) {
   res.render("community_list", { posts })
 })
 app.get("/community_submit", async function (req, res) {
-  res.render("community_submit", { data })
+  res.render("community_submit")
 })
 
 app.get("/community_detail/:id", async function (req, res) {

@@ -196,7 +196,7 @@
 
             .section {position:relative;height:900px;}
             .run img {width:100%;}
-            .run {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);max-width:400px;width:100%;animation:updown .5s linear infinite alternate;}
+            .run {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);max-width:300px;width:100%;animation:updown .5s linear infinite alternate;}
             .hand1 {position:absolute;z-index:1;top:19.7%;left:45%;width:17%;animation:hand1 1s linear infinite alternate;transform-origin:100% 10%;}
             .hand2 {position:absolute;z-index:-1;top:19.4%;left:46%;width:16%;animation:hand2 1s linear infinite alternate;transform-origin:100% 20%;}
             .foot1-1 {position:absolute;z-index:-2;top:45%;left:48.7%;width:22%;animation:foot1-1 1s linear infinite alternate;transform-origin:40% 10%;}
@@ -212,17 +212,14 @@
                 from {transform:rotate(0);}
                 to {transform:rotate(-60deg);}
             }
-
             @keyframes hand2{
                 from {transform:rotate(-90deg);}
                 to {transform:rotate(0);}
             }
-
             @keyframes foot1-1{
                 from {transform:rotate(50deg);}
                 to {transform:rotate(0);}
             }
-
             @keyframes foot1-2{
                 from {transform:rotate(67deg);}
                 40% {transform:rotate(50deg);}
@@ -230,7 +227,6 @@
                 90% {transform:rotate(0);}
                 to {transform:rotate(67deg);}
             }
-
             @keyframes toe1{
                 from {transform:rotate(0deg);}
                 50% {transform:rotate(0deg);}
@@ -238,12 +234,10 @@
                 90% {transform:rotate(-30deg);}
                 to {transform:rotate(0deg);}
             }
-
             @keyframes foot2-1{
                 from {transform:rotate(0);}
                 to {transform:rotate(50deg);}
             }
-
             @keyframes foot2-2{
                 from {transform:rotate(0);}
                 40% {transform:rotate(0);}
@@ -251,7 +245,6 @@
                 90% {transform:rotate(50deg);}
                 to {transform:rotate(0);}
             }
-            
             @keyframes toe2{
                 from {transform:rotate(0deg);}
                 30% {transform:rotate(-30deg);}
@@ -259,7 +252,6 @@
                 50% {transform:rotate(0deg);}
                 to {transform:rotate(0deg);}
             }
-            
             @keyframes updown{
                 from {margin-top:-8px;}
                 to {margin-top:0;}
@@ -267,15 +259,46 @@
             .road {
                 /* background-color: red; */
                 position: absolute;
-                width: 1500px;
+                max-width: 1400px;
+                width: 1400px;
                 height: 200px;
+                /* overflow: hidden; */
                 left: -550px;
-                border-top: 5px dashed white;
-                border-bottom: 5px dashed white;
-                top: 250px;
-                /* animation: ; */
+                border-top: 4px solid white;
+                border-bottom: 4px solid white;
+                top: 200px;
+                animation: running-road 1.5s linear infinite forwards;
             }
-            
+            .road div {
+                width: 1400px;
+                height: 20px;
+                border-bottom: 3px dashed white;
+                position: relative;
+                top: 80px;
+                /* background-color: red; */
+                overflow: hidden;
+            }
+            @keyframes running-road {
+                to {left: -600px;}
+                from {left: -500px;}
+            }
+            .sec3-title {
+                width: 1300px;
+                height: 200px;
+                color: white;
+                font-size: 40px;
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+                position: relative;
+                top: 70px;
+                font-weight: bold;
+            }
+            .sec3-title span {
+                color: darkgoldenrod;
+                font-size: 50px;
+            }
+
             #about {
                 color: white;
                 font-weight: 400;
@@ -314,6 +337,7 @@
         <!-- section3-->
         <section class="bg-dark div-section">
             <div class="section">
+                <div class="sec3-title">Run for your <span>GOAL</span>!</div>
                 <div class="run">
                     <!-- 몸전체 이미지 -->
                     <img src="/assets/images/man.png">
@@ -343,7 +367,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="road"></div>  
+                    <div class="road"><div></div></div>  
                 </div>
             </div>
             

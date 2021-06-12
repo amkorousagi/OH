@@ -29,7 +29,7 @@ userNoAuthRouter.post("/login", async (req, res, next) => {
 })
 userNoAuthRouter.post("/join", async (req, res, next) => {
   try {
-    const { UserId, UserPassword, Nickname } = req.body
+    const { UserId, UserPassword, Nickname,StateMessage } = req.body
     if (UserId === undefined || UserPassword === undefined || Nickname ===undefined)
       throw new Error("plz fill Id, Password, Nickname")
 

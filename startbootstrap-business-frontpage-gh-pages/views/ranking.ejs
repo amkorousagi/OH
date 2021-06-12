@@ -42,11 +42,11 @@
               <td>
                   <%= i+1 %>
               </td>
-              <td><%= users.Nickname %></td>
-              <td>hello</td>
-              <td><%= users.SolvedProblem.length %></td>
-              <td>50000</td>
-              <td id="last">20%</td>
+              <td><%= users[i].Nickname %></td>
+              <td><%= users[i].StateMessage %></td>
+              <td><%= users[i].Score %></td>
+              <td><%= users[i].NumOfSubmit %></td>
+              <td id="last"><%= <%= users[i].Score %>/(users[i].NumOfSubmit) %></td>
             </tr>
             <% } %>
             </tbody>

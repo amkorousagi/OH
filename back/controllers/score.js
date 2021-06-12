@@ -42,6 +42,7 @@ scoreRouter.post("/", async (req, res, next) => {
     const problem = await Problem.findByIdAndUpdate(RefProblem, {
       $inc: { NumOfSubmit: 1 },
     })
+    await User.findByIdAndUpdate(req.user._id, { $inc: { NumOfSubmit: 1 } })
     if (!problem) throw new Error("invalid problem ref")
 
     const score = new Score({ ...target, Result: "waiting", Date: new Date() })
@@ -79,7 +80,9 @@ scoreRouter.post("/", async (req, res, next) => {
       const my_problem = await Problem.findByIdAndUpdate(RefProblem, {
         $inc: { NumOfCorrect: 1 },
       })
-      await User.findByIdAndUpdate(req.user._id,{SolvedProblem:req.user.SolvedProblem.concat([my_problem._id])})
+      await User.findByIdAndUpdate(req.user._id, {
+        SolvedProblem: req.user.SolvedProblem.concat([my_problem._id]),
+      })
     }
 
     const finalScore = await Score.findByIdAndUpdate(

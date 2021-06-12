@@ -19,6 +19,8 @@ userRouter.get("/ranking", async (req, res, next) => {
       let temp = {}
       temp.Score = u.SolvedProblem.length
       temp.Nickname = u.Nickname
+      temp.StateMessage = u.StateMessage
+      temp.NumOfSubmit = u.NumOfSubmit
       return temp
     })
     users = users.sort()
@@ -41,7 +43,7 @@ userRouter.get("/:id", async (req, res, next) => {
 
 userRouter.patch("/", async (req, res, next) => {
   try {
-    const { UserPassword, Nickname } = req.body
+    const { UserPassword, Nickname, StateMessage } = req.body
     if (UserPassword === undefined && Nickname === undefined)
       throw new Error("plz fill password or nickname")
 
@@ -57,6 +59,9 @@ userRouter.patch("/", async (req, res, next) => {
       if (result) throw new Error("same password with prior one")
       const hashedPassword = bcrypt.hash(UserPassword, saltRounds)
       target.UserPassword = hashedPassword
+    }
+    if(StateMessage){
+      target.StateMessage = StateMessage
     }
 
     const updatedUser = await User.findByIdAndUpdate(req.user._id, target, {

@@ -37,14 +37,14 @@
             </tr>
             </thead>
             <tbody>
-            <% for (var i = 0; i < 1; i++) { %>
+            <% for (var i = 0; i < users.length; i++) { %>
             <tr>
               <td>
                   <%= i+1 %>
               </td>
-              <td><%= users.Nickname %></td>
+              <td><%= users[i].Nickname %></td>
               <td>hello</td>
-              <td><%= users.SolvedProblem.length %></td>
+              <td><%= users[i].Score %></td>
               <td>50000</td>
               <td id="last">20%</td>
             </tr>

@@ -157,7 +157,6 @@
                 position: relative;
                 top: -40px;
             }
-            * {margin:0;padding:0;box-sizing:border-box;}
             ul, li {list-style:none;}
             [name="slide"] {display:none;}
             .slidebox {
@@ -182,11 +181,11 @@
                 transition:all .25s ease-out;
             }
 
-            [id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide01 10s infinite;}
+            [id="slide01"]:checked ~ .slidelist .slideitem {transform:translateX(0);animation:slide 10s infinite forwards;}
 
-            @keyframes slide01 {
-                0% {left:0%;}
-                5% {left: 0%;}
+            @keyframes slide {
+                0% {left: 0%;}
+                10% {left: 0%;}
                 45% {left: -100%;}
                 50% {left: -100%;}
                 90% {left: -200%;}

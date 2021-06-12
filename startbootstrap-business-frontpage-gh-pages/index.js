@@ -106,12 +106,6 @@ app.get("/about", function (req, res) {
   res.render("about")
 })
 
-app.get("/problem_detail", async function (req, res) {
-  const result = await getProblems()
-  const data = result.data.prolems
-  res.render("problem_detail", { data })
-})
-
 app.get("/login", function (req, res) {
   res.render("login")
 })

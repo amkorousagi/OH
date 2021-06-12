@@ -39,6 +39,8 @@
                 success: function(data){
                     console.log(data);
                     localStorage.setItem("token",data.token)
+                    document.cookie = `token=${data.token}`
+                    alert(document.cookie)
                     //window.open('/', '_self');
                 },
                 error: function(a,b,c){

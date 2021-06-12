@@ -2,11 +2,28 @@
 const userRouter = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
+const { json } = require("express")
 const saltRounds = 10
 
 userRouter.get("/", (req, res, next) => {
   try {
     return res.status(200).json({ success: true, user: req.user })
+  } catch (err) {
+    next(err)
+  }
+})
+userRouter.get("/ranking", async (req, res, next) => {
+  try {
+    let users = await User.find({})
+    users = users.map((u) => {
+      let temp = {}
+      temp.Score = u.SolvedProblem.length
+      temp.Nickname = u.Nickname
+      return temp
+    })
+    users = users.sort()
+    console.log(users)
+    return res.status(200).json({ success: true, users })
   } catch (err) {
     next(err)
   }
@@ -21,6 +38,7 @@ userRouter.get("/:id", async (req, res, next) => {
     next(err)
   }
 })
+
 userRouter.patch("/", async (req, res, next) => {
   try {
     const { UserPassword, Nickname } = req.body

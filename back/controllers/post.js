@@ -37,9 +37,11 @@ postRouter.post("/", async (req, res, next) => {
       Body,
       Writer,
       NumOfView,
-      Date: new Date()
+      Date: new Date(),
+      Nickname : req.user.Nickname
     })
     const savedPost = await post.save()
+    console.log(savedPost)
     return res.status(200).json({ success: true, savedPost })
   } catch (err) {
     next(err)

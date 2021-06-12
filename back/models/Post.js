@@ -5,7 +5,8 @@ const PostSchema = new mongoose.Schema({
     Body : {type:String, required:true},
     NumOfView : {type : Number, default:0},
     Date : {type: Date},
-    Writer: {type:mongoose.Schema.Types.ObjectId, ref:"User"}
+    Writer: {type:mongoose.Schema.Types.ObjectId, ref:"User"},
+    Nickname : String
 })
 
 module.exports = mongoose.model("Post",PostSchema)

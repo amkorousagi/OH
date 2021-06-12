@@ -19,6 +19,13 @@
                 font-weight: 400;
             }
         </style>
+         <script src="jquery-3.6.0.min.js"></script>
+         <script>
+             jQuery(document).ready(function($) {
+                 console.log("my token is ", localStorage.getItem("token"))
+                  var
+             });
+         </script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -44,7 +51,7 @@
             <tr>
               <td><%= i + 1 %></td>
               <!-- <td>문제입니다.</td> -->
-              <td><a href=""><%= problems[i].Title %></a></td>
+              <td><a href="problem_detail/<%= problems[i]._id %>""><%= problems[i].Title %></a></td>
               <td><%= problems[i].Difficulty %></td>
               <td><%= problems[i].Keyword %></td>
               <td><%= problems[i].NumOfCorrect %></td>

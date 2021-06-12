@@ -19,7 +19,7 @@
     <script src="jquery.counterup.min.js"></script>
     <script>
         jQuery(document).ready(function($) {
-            console.log("my token is ", localStorage.getItem("token"))
+            console.log("my token is ",document.cookie)
             $('.counter').counterUp({
                 delay: 10,
                 time: 1000

@@ -38,6 +38,7 @@ app.use(cors()) // for preventing cross origin error
 app.use(express.json()) // for parsing req.body
 app.use((req,res,next)=>{
   console.log("req. body : ",req.body)
+  next()
 })
 app.use("/user_no_auth", userNoAuthRouter)
 

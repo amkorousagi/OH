@@ -15,6 +15,7 @@ userNoAuthRouter.post("/login", async (req, res, next) => {
         const token = await jwt.sign(user.toJSON(), config.secret, {
           expiresIn: 60 * 60 * 24 * 3,
         })
+        console.log(token)
         return res.status(200).json({ success: true, token })
       } else {
         throw new Error("invalid password")
@@ -39,6 +40,7 @@ userNoAuthRouter.post("/join", async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(UserPassword, saltRounds)
     const user = new User({ ...req.body, UserPassword: hashedPassword, Date: new Date() })
     const savedUser = await user.save()
+    console.log(savedUser)
     return res.status(201).json({ success: true, savedUser })
   } catch (err) {
     next(err)

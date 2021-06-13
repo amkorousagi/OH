@@ -19,7 +19,7 @@
         function request() {
             let url_string = window.location.href
             let arr = url_string.split("/")
-            console.log(arr)
+            // console.log(arr)
             const pro_id = arr[arr.length-1]
             const code = document.getElementById("code").value;
             const obj = { Code: code, RefProblem: pro_id };
@@ -33,13 +33,12 @@
                 dataType: "json",
                 success: function (data) {
                     if (data) {
-                        console.log(data)
-                        alert("문제 제출.");
+                        alert("문제가 제출되었습니다.");
                     }
                     else {
                         alert("작성오류");
                     }
-                    //window.open('/problem_list', '_self')
+                    window.open('/problem_list', '_self')
                 },
                 error: function (a, b, c) {
                     console.log(a);

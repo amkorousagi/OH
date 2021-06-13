@@ -28,6 +28,14 @@
             const password_check = document.getElementById('login_password_check').value;
             const nickname = document.getElementById('nickname').value;
             const stateMessage = document.getElementById('stateMessage').value;
+            if(id=='' || password=='' || password_check=='' || nickname=='' || stateMessage=='') {
+                alert('모든 항목을 입력해 주세요.');
+                return;
+            } 
+            if(password != password_check) {
+                alert('비밀번호가 서로 일치하지 않습니다.');
+                return;
+            }
             const data = {
                     UserId: id,
                     UserPassword: password,

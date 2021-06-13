@@ -20,7 +20,40 @@
         }
     </style>
     <script src="jquery-3.6.0.min.js"></script>
-    <script src="/js/logout.js"></script>
+    <script src="js/logout.js"></script>
+    <script>
+        function onrequest() {
+            const id = document.getElementById('login_user_id').value;
+            const password = document.getElementById('login_password').value;
+            const password_check = document.getElementById('login_password_check').value;
+            const nickname = document.getElementById('nickname').value;
+            const stateMessage = document.getElementById('stateMessage').value;
+            const data = {
+                    UserId: id,
+                    UserPassword: password,
+                    Nickname: nickname,
+                    StateMessage: stateMessage
+                };
+            //console.log(JSON.stringify(data));
+            $.ajax({
+                type: "POST",
+                accepts: "application/json",
+                contentType: "application/json; charset=utf-8",
+                url: 'http://localhost:3001/user_no_auth/join', 
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function(data){
+                    console.log(data);
+                    alert('회원 가입이 완료되었습니다.')
+                    window.open('/', '_self');
+                },
+                error: function(a,b,c){
+                    console.log(a,b,c)
+                    alert('이미 등록된 id입니다.');
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>

@@ -11,12 +11,16 @@ const logger = require("./utils/logger")
 const middleware = require("./utils/middleware")
 
 //import router
-const userNoAuthRouter = require("./controllers/user_no_auth")
 const userRouter = require("./controllers/user")
+const userNoAuthRouter = require("./controllers/user_no_auth")
 const postRouter = require("./controllers/post")
+const postNoAuthRouter = require("./controllers/post_no_auth")
 const problemRouter = require("./controllers/problem")
+const problemNoAuthRouter = require("./controllers/problem_no_auth")
 const commentRouter = require("./controllers/comment")
+const commentNoAuthRouter = require("./controllers/comment_no_auth")
 const scoreRouter = require("./controllers/score")
+const scoreNoAuthRouter = require("./controllers/score_no_auth")
 
 //db connect
 mongoose
@@ -36,11 +40,15 @@ mongoose
 //use routes
 app.use(cors()) // for preventing cross origin error
 app.use(express.json()) // for parsing req.body
-app.use((req,res,next)=>{
-  console.log("req. body : ",req.body)
+app.use((req, res, next) => {
+  console.log("req. body : ", req.body)
   next()
 })
 app.use("/user_no_auth", userNoAuthRouter)
+app.use("/post_no_auth", postNoAuthRouter)
+app.use("/problem_no_auth", problemNoAuthRouter)
+app.use("/comment_no_auth", commentNoAuthRouter)
+app.use("/score_no_auth", scoreNoAuthRouter)
 
 //for auth
 app.use(middleware.tokenExtractor)

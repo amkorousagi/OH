@@ -5,6 +5,24 @@ const jwt = require("jsonwebtoken")
 const config = require("../utils/config")
 const saltRounds = 10
 
+userNoAuthRouter.get("/ranking", async (req, res, next) => {
+  try {
+    let users = await User.find({})
+    users = users.map((u) => {
+      let temp = {}
+      temp.Score = u.SolvedProblem.length
+      temp.Nickname = u.Nickname
+      temp.StateMessage = u.StateMessage
+      temp.NumOfSubmit = u.NumOfSubmit
+      return temp
+    })
+    users = users.sort()
+    console.log(users)
+    return res.status(200).json({ success: true, users })
+  } catch (err) {
+    next(err)
+  }
+})
 userNoAuthRouter.post("/login", async (req, res, next) => {
   try {
     const { UserId, UserPassword } = req.body

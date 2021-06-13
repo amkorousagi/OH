@@ -1,5 +1,5 @@
 div.default {
-    width: 1200px;
+    width: 90%;
     margin: 50px auto 50px auto
 }
 p.write_btn {
@@ -22,7 +22,7 @@ p.write_btn a:hover {
     text-decoration: underline;
 }
 table.list-table {
-    width: 1200px;
+    width: 100%;
     border-collapse: collapse;
     text-align: left;
     line-height: 1.5;

@@ -128,17 +128,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-4">
+                    <div class="col-lg-6 col-xl-6">
                         <div class="card mb-5 mb-xl-0">
                             <div class="card-body p-5">
                                 <div class="text-center mb-5">
-                                    <h2 class="fw-bolder mb-5">맞은 문제</h2>
+                                    <h2 class="fw-bolder mb-5">제출한 문제</h2>
                                 </div>
-                                <p>푼 문제 : <%= scores.length %>
+                                <p>문제 수 : <%= scores.length %>
                                 </p>
                                 <table>
                                     <div>
-                                        <% for (var i=0; i < scores.length; i++) { %>
+                                        <% for (var i=scores.length - 1; i >=0 ; i--) { %>
                                             <tr>
                                                 <td colspan="3" width="100" class="reply_cont">
                                                     <%= scores[i].ProblemTitle %>

@@ -33,7 +33,6 @@ jQuery(document).ready(async function ($) {
         )
       },
     })
-    console.log(result)
     mypage.setAttribute("href", "/mypage")
   }
   console.log("my token is ", document.cookie)

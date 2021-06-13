@@ -38,7 +38,7 @@
             console.log(obj);
             $.ajax({
                 type:'POST',
-                url:"http://localhost:3001/problem",
+                url:"<%= backURL%>/problem",
                 accepts: "application/json",
                 data : JSON.stringify(obj),
                 contentType: "application/json; charset=utf-8",

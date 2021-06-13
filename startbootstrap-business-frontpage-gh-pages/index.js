@@ -4,7 +4,12 @@ const app = new express()
 const ejs = require("ejs")
 const axios = require("axios")
 const cookieParser = require("cookie-parser")
+const config = require("./config")
 
+const backURL = config.backURL
+
+app.locals.frontURL = config.frontURL
+app.locals.backURL = backURL
 app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(express.static("public"))
@@ -15,12 +20,10 @@ app.get("/", async function (req, res) {
   )
   const problems = result_problem.data.problems
   const NumOfProblems = problems.length < 10 ? problems.length : 10
-  const result_post = await axios.get("http://localhost:3001/post_no_auth")
+  const result_post = await axios.get(backURL + "/post_no_auth")
   const posts = result_post.data.posts
   const NumOfPosts = posts.length < 10 ? posts.length : 10
-  const result_user = await axios.get(
-    "http://localhost:3001/user_no_auth/ranking"
-  )
+  const result_user = await axios.get(backURL + "/user_no_auth/ranking")
   const users = result_user.data.users
   users.sort(function (a, b) {
     return b.Score - a.Score
@@ -35,7 +38,7 @@ app.get("/problem_submit", async function (req, res) {
 })
 app.get("/problem_list", async function (req, res) {
   console.log(req.cookies.token)
-  const result = await axios.get("http://localhost:3001/problem_no_auth")
+  const result = await axios.get(backURL + "/problem_no_auth")
   const problems = result.data.problems
   for (var i = 0; i < problems.length; i++) {
     problems[i].Rate = problems.NumOfSubmit
@@ -47,16 +50,14 @@ app.get("/problem_list", async function (req, res) {
 })
 app.get("/problem_detail/:id", async function (req, res) {
   console.log(req.params.id)
-  const result = await axios.get(
-    "http://localhost:3001/problem_no_auth/" + req.params.id
-  )
+  const result = await axios.get(backURL + "/problem_no_auth/" + req.params.id)
   const data = result.data.problem
   console.log("detail " + JSON.stringify(data))
   res.render("problem_detail", { data, pro_id: req.params.id })
 })
 
 app.get("/community_list", async function (req, res) {
-  const result = await axios.get("http://localhost:3001/post_no_auth")
+  const result = await axios.get(backURL + "/post_no_auth")
   let posts = result.data.posts
   console.log(posts)
   res.render("community_list", { posts })
@@ -67,20 +68,20 @@ app.get("/community_submit", async function (req, res) {
 
 app.get("/community_detail/:id", async function (req, res) {
   console.log(req.params.id)
-  const result = await axios.get(
-    "http://localhost:3001/post_no_auth/" + req.params.id
+  const result = await axios.get(backURL + "/post_no_auth/" + req.params.id)
+  const result2 = await axios.get(
+    backURL + "/comment_no_auth?RefPost=" + req.params.id
   )
-  const result2 = await axios.get(  "http://localhost:3001/comment_no_auth?RefPost=" + req.params.id)
   console.log(result2.data)
   const comments = result2.data.comments
   const data = result.data.post
   console.log(data)
-  res.render("community_detail", { data,comments })
+  res.render("community_detail", { data, comments })
 })
 
 app.get("/ranking", async function (req, res) {
   console.log("rangking")
-  const result = await axios.get("http://localhost:3001/user_no_auth/ranking")
+  const result = await axios.get(backURL + "/user_no_auth/ranking")
   users = result.data.users
   users.sort(function (a, b) {
     return b.Score - a.Score
@@ -102,12 +103,12 @@ app.get("/register", function (req, res) {
 
 app.get("/mypage", async function (req, res) {
   console.log("mypage")
-  const result = await axios.get("http://localhost:3001/user", {
+  const result = await axios.get(backURL + "/user", {
     headers: { Authorization: "bearer " + req.cookies.token },
   })
   const data = result.data.user
   res.render("mypage", { data })
-  console.log("detail " + JSON.stringify(data)) 
+  console.log("detail " + JSON.stringify(data))
 })
 
 //app.post()

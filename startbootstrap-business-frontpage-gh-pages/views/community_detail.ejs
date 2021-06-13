@@ -26,7 +26,7 @@
             console.log(obj);
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:3001/comment",
+                url: "<%= backURL%>/comment",
                 accepts: "application/json",
                 data: JSON.stringify(obj),
                 contentType: "application/json; charset=utf-8",

@@ -107,7 +107,12 @@ app.get("/mypage", async function (req, res) {
     headers: { Authorization: "bearer " + req.cookies.token },
   })
   const user = result.data.user
-  res.render("mypage", { user })
+  const result2 = await axios.get(backURL + "/score", {
+    headers: { Authorization: "bearer " + req.cookies.token },
+  })
+  const scores = result2.data.scores
+  console.log("scores ", scores)
+  res.render("mypage", { user,scores })
   console.log("detail " + JSON.stringify(data))
 })
 

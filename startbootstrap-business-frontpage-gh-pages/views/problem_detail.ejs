@@ -20,9 +20,10 @@
             let url_string = window.location.href
             let arr = url_string.split("/")
             console.log(arr)
-            const pro_id = arr[arr.length-1]
+            const pro_id = arr[arr.length - 1]
+            const pro_title = "<%= data.Title %>"
             const code = document.getElementById("code").value;
-            const obj = { Code: code, RefProblem: pro_id };
+            const obj = { Code: code, RefProblem: pro_id, ProblemTitle: pro_title };
             console.log(obj);
             $.ajax({
                 type: 'POST',
@@ -34,7 +35,7 @@
                 success: function (data) {
                     if (data) {
                         console.log(data)
-                        alert("문제 제출.");
+                        alert(`결과 : ${data.score.Result}`);
                     }
                     else {
                         alert("작성오류");
@@ -127,7 +128,7 @@
             <div><textarea class="case" id="code" value=""></textarea></br></div>
         </div>
         <div class="wrap">
-            <button  type="button" class="button" onclick="request()">SUBMIT</button>
+            <button type="button" class="button" onclick="request()">SUBMIT</button>
         </div>
         </br>
         <!-- Footer-->

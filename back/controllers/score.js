@@ -10,13 +10,21 @@ const { PythonShell } = require("python-shell")
 
 const writeFile = util.promisify(fs.writeFile)
 
+scoreRouter.get("/", async (req, res, next) => {
+  try {
+    const scores = await Score.find({ RefUser: req.user._id })
+    return res.status(200).json({ success: true, scores })
+  } catch (err) {
+    next(err)
+  }
+})
 scoreRouter.post("/", async (req, res, next) => {
   try {
-    const { Code, RefProblem } = req.body
+    const { Code, RefProblem,ProblemTitle } = req.body
     const RefUser = req.user._id
     if (RefProblem === undefined || Code === undefined)
       throw new Error("no ref post or code")
-    let target = { Code, RefProblem, RefUser }
+    let target = { Code, RefProblem, RefUser,ProblemTitle }
 
     const problem = await Problem.findByIdAndUpdate(RefProblem, {
       $inc: { NumOfSubmit: 1 },
@@ -36,22 +44,23 @@ scoreRouter.post("/", async (req, res, next) => {
     await writeFile("./resource/code/" + tempScore._id + ".py", Code)
 
     for (let i = 0; i < problem.TestCase.length; i++) {
-      let pyshell = new PythonShell("./resource/code/" + tempScore._id + ".py")
-      pyshell.send(problem.TestCase[i].Input)
       const my_message = await new Promise((resolve, reject) => {
-        pyshell.on("message", (message) => {
-          resolve(message)
-        })
+        PythonShell.run(
+          "./resource/code/" + tempScore._id + ".py",
+          { args: problem.TestCase[i].Input },
+          (err, results) => {
+            if (err) {
+              console.log(err)
+              resolve(err)
+            } else {
+              console.log("results : ", results)
+              resolve(results)
+            }
+          }
+        )
       })
-      pyshell.end((err, code, signal) => {
-        if (err) {
-          console.log(err)
-          reject(err)
-        }
-      })
-      console.log(problem)
       console.log("mymessage ", my_message)
-      console.log(i,"th output ",problem.TestCase[i].Output)
+      console.log(i, "th output ", problem.TestCase[i].Output)
       if (my_message != problem.TestCase[i].Output) {
         my_result = false
         Result = "failed"
@@ -63,9 +72,13 @@ scoreRouter.post("/", async (req, res, next) => {
       const my_problem = await Problem.findByIdAndUpdate(RefProblem, {
         $inc: { NumOfCorrect: 1 },
       })
-      await User.findByIdAndUpdate(req.user._id, {
-        SolvedProblem: req.user.SolvedProblem.concat([my_problem._id]),
-      })
+      if (req.user.SolvedProblem.find((e) => e == RefProblem)) {
+        console.log("duplicated solving")
+      } else {
+        await User.findByIdAndUpdate(req.user._id, {
+          SolvedProblem: req.user.SolvedProblem.concat([my_problem._id]),
+        })
+      }
     }
 
     const finalScore = await Score.findByIdAndUpdate(

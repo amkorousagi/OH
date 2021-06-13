@@ -48,7 +48,7 @@ userRouter.patch("/", async (req, res, next) => {
       throw new Error("plz fill password or nickname")
 
     let target = {}
-    if (Nickname) {
+    if (Nickname && Nickname != req.user.Nickname) {
       const dup = await User.find({ Nickname })
       console.log(dup.length)
       if (dup.length) throw new Error("duplicated nickname")

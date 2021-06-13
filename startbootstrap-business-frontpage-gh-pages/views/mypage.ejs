@@ -56,8 +56,9 @@
                             window.open('/mypage', '_self');
                         },
                         error: function (a, b, c) {
+                            console.log(a);
+                            console.log(b);
                             console.log(c);
-                            console.log(data2);
                         },
                         beforeSend: function (xhr) {
                             /* Authorization header */
@@ -67,6 +68,8 @@
                 },
                 error: function (a, b, c) {
                     alert('비밀번호를 확인해 주세요.');
+                    console.log(a);
+                    console.log(b);
                     console.log(c);
                 }
             });
@@ -117,7 +120,8 @@
                                                 <label for="stateMessage">상태메세지</label>
                                             </div>
                                             <input type="hidden" id="password_check" value="<%= user.UserPassword %>">
-                                            <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">수정</button></div>
+                                            <div class="d-grid"><button type="button" class="btn btn-primary btn-lg"
+                                                    onclick="onrequest()">수정</button></div>
                                         </form>
                                     </div>
                                 </div>
@@ -130,12 +134,29 @@
                                 <div class="text-center mb-5">
                                     <h2 class="fw-bolder mb-5">푼 문제</h2>
                                 </div>
-                                <div>
-                                    <%= user.SolvedProblem.length %>
-                                    <% for (var i=0; i < user.SolvedProblem.length; i++) { %>
-                                    abc
-                                    <% } %>
-                                </div>
+                                <p>푼 문제 : <%= scores.length %>
+                                </p>
+                                <table>
+                                    <div>
+                                        <% for (var i=0; i < scores.length; i++) { %>
+                                            <tr>
+                                                <td colspan="3" width="100" class="reply_cont">
+                                                    <%= scores[i].ProblemTitle %>
+                                                </td>
+                                                <td colspan="3" width="500" class="reply_cont">
+                                                    <%= scores[i].Date.substring(0,10) %>
+                                                        <%= scores[i].Date.substring(11,16) %>
+                                                </td>
+                                                <td colspan="2" width="200" class="reply_cont">
+                                                    <%= scores[i].Code.substring(0,10) %> ...
+                                                </td>
+                                                <td colspan="2" width="200" class="reply_cont">
+                                                    <%= scores[i].Result %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </div>
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -92,7 +92,7 @@ app.get("/register", function (req, res) {
   res.render("register")
 })
 
-app.get("/mypage", function (req, res) {
+app.get("/mypage", async function (req, res) {
   console.log("mypage")
   const result = await axios.get(
     "http://localhost:3001/user", {

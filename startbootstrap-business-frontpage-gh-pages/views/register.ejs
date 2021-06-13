@@ -37,7 +37,7 @@
                 type: "POST",
                 accepts: "application/json",
                 contentType: "application/json; charset=utf-8",
-                url: 'http://localhost:3001/user_no_auth/join', 
+                url: '<%= backURL%>/user_no_auth/join', 
                 data: JSON.stringify(data),
                 dataType: "json",
                 success: function(data){

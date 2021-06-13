@@ -22,7 +22,7 @@
             const obj = { Title: title, Body: cont };
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:3001/post",
+                url: "<%= backURL%>/post",
                 accepts: "application/json",
                 data: JSON.stringify(obj),
                 contentType: "application/json; charset=utf-8",

@@ -25,7 +25,7 @@
             console.log(obj);
             $.ajax({
                 type: 'POST',
-                url: "http://localhost:3001/score",
+                url: "<%= backURL%>/score",
                 accepts: "application/json",
                 data: JSON.stringify(obj),
                 contentType: "application/json; charset=utf-8",

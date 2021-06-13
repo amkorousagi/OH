@@ -7,7 +7,8 @@ const CommentSchema = new mongoose.Schema({
     RefPost : {type:mongoose.Schema.Types.ObjectId, ref:"Post", required:true},
     ToComment : {type:mongoose.Schema.Types.ObjectId, ref:"Comment"},
     Date : {type: Date},
-    Writer : {type:mongoose.Types.ObjectId, ref:"User", required:true}
+    Writer : {type:mongoose.Types.ObjectId, ref:"User", required:true},
+    Nickname : String
 })
 
 module.exports = mongoose.model("Comment",CommentSchema)

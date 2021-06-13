@@ -50,7 +50,7 @@
             <tbody>
             <% for (var i = 0; i < problems.length; i++) { %>
             <tr>
-              <td><%= i + 1 %></td>
+              <td><%= problems.length - i %></td>
               <!-- <td>문제입니다.</td> -->
               <td><a href="problem_detail/<%= problems[i]._id %>"><%= problems[i].Title %></a></td>
               <td><%= problems[i].Difficulty %></td>

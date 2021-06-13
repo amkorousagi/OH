@@ -81,7 +81,7 @@
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
                 <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-5 col-xl-5">
+                    <div class="col-lg-4 col-xl-4">
                         <div class="card mb-5 mb-xl-0">
                             <div class="card-body p-5">
                                 <div class="text-center mb-5">
@@ -124,22 +124,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-xl-5">
+                    <div class="col-lg-4 col-xl-4">
                         <div class="card mb-5 mb-xl-0">
                             <div class="card-body p-5">
                                 <div class="text-center mb-5">
-                                    <h2 class="fw-bolder mb-5">푼 문제</h2>
+                                    <h2 class="fw-bolder mb-5">맞은 문제</h2>
                                 </div>
                                 <div>
-                                    <%= user.SolvedProblem.length %>
+                                    <% if(user.SolvedProblem.length==0) %>
+                                    아직 맞은 문제가 없습니다.
                                     <% for (var i=0; i < user.SolvedProblem.length; i++) { %>
-                                    abc
+                                    <%= user.SolvedProblem[i] %>
                                     <% } %>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="col-lg-4 col-xl-4">
+                        <div class="card mb-5 mb-xl-0">
+                            <div class="card-body p-5">
+                                <div class="text-center mb-5">
+                                    <h2 class="fw-bolder mb-5">틀린 문제</h2>
+                                </div>
+                                <div>
+                                    <% if(user.SolvedProblem.length==0) %>
+                                    아직 틀린 문제가 없습니다.
+                                    <% for (var i=0; i < user.SolvedProblem.length; i++) { %>
+                                    <%= user.SolvedProblem[i] %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

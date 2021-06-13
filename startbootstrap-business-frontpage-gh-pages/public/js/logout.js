@@ -12,7 +12,7 @@ jQuery(document).ready(async function ($) {
     const mypage = document.getElementById("register")
     $.ajax({
       type: "GET",
-      url: "http://localhost:3001/user",
+      url: "13.209.22.172:3001/user",
       accepts: "application/json",
       contentType: "application/json; charset=utf-8",
       dataType: "json",

@@ -19,6 +19,7 @@ jQuery(document).ready(async function ($) {
       success: function (data) {
         console.log(data)
         mypage.textContent = data.user.UserId
+        mypage.setAttribute("href", "/mypage")
       },
       error: function (a, b, c) {
         console.log(a)
@@ -33,7 +34,7 @@ jQuery(document).ready(async function ($) {
         )
       },
     })
-    mypage.setAttribute("href", "/mypage")
+    
   }
   console.log("my token is ", document.cookie)
 })

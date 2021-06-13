@@ -13,7 +13,9 @@ app.locals.backURL = backURL
 app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(express.static("public"))
-
+app.get("/test",(req,res)=>{
+  res.send("hi")
+})
 app.get("/", async function (req, res) {
   const result_problem = await axios.get(
     backURL + "/problem_no_auth"

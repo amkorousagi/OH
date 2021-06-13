@@ -9,8 +9,25 @@ app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(express.static("public"))
 
-app.get("/", function (req, res) {
-  res.render("index")
+app.get("/", async function (req, res) {
+  const result_problem = await axios.get("http://localhost:3001/problem", {
+  headers: { Authorization: "bearer " + req.cookies.token },
+  })
+  const problems = result_problem.data.problems
+  const NumOfProblems = problems.length < 10 ? problems.length : 10;
+  const result_post = await axios.get("http://localhost:3001/post", {
+    headers: { Authorization: "bearer " + req.cookies.token },
+  })
+  const posts = result_post.data.posts
+  const NumOfPosts = posts.length < 10 ? posts.length : 10;
+  const result_user = await axios.get("http://localhost:3001/user/ranking", {
+    headers: { Authorization: "bearer " + req.cookies.token },
+  })
+  const users = result_user.data.users
+  users.sort(function(a, b) { return b.Score - a.Score})
+  const NumOfUsers = users.length < 10 ? users.length : 10;
+  const num = [NumOfProblems, NumOfPosts, NumOfUsers]
+  res.render("index", {problems, posts, users, num})
 })
 
 app.get("/problem_submit", async function (req, res) {
@@ -55,16 +72,11 @@ app.get("/community_submit", async function (req, res) {
 
 app.get("/community_detail/:id", async function (req, res) {
   console.log(req.params.id)
-  const result2 = await axios.get(
-    "http://localhost:3001/comment/" + req.params.id,
-  { headers: { Authorization: "bearer " + req.cookies.token } })
-
   const result = await axios.get(
     "http://localhost:3001/post/" + req.params.id,
     { headers: { Authorization: "bearer " + req.cookies.token } }
   )
   const data = result.data.post
-  const reply = result2.data.comment
   console.log(data)
   res.render("community_detail", { data })
 })
@@ -75,8 +87,7 @@ app.get("/ranking", async function (req, res) {
     headers: { Authorization: "bearer " + req.cookies.token },
   })
   users = result.data.users
-  users.sort(function(a, b) {a.Score - b.Score})
-  console.log(users)
+  users.sort(function(a, b) { return b.Score - a.Score})
   res.render("ranking", { users })
 })
 

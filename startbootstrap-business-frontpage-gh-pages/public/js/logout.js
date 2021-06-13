@@ -13,9 +13,5 @@ jQuery(document).ready(function ($) {
         mypage.textContent = '내정보';
         mypage.setAttribute('href', '/mypage');
     }
-    console.log("my token is ", document.cookie)
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
+    console.log("my token is ", document.cookie);
 });

@@ -118,6 +118,6 @@ app.get("/mypage", async function (req, res) {
 
 //app.post()
 
-app.listen(4000, function () {
+app.listen(4000,"0.0.0.0", function () {
   console.log("App listening on port 4000")
 })

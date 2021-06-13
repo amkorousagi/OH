@@ -89,27 +89,27 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h2 class="h4 fw-bolder"><a class="home-link" href="/problem_list">최근 문제</a></h2>
                     <hr class="mb-4">
-                    <% for (var i=0; i < 10; i++) { %>
+                    <% for (var i=0; i < num[0]; i++) { %>
                         <div class="card mb-1">
-                            <div class="card-body">1번 A+B</div>
+                            <div class="card-body"><%=i+1%>. <a href="problem_detail/<%= problems[i]._id %>"><%=problems[i].Title %></a></div>
                         </div>
                         <% } %>
                 </div>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <h2 class="h4 fw-bolder"><a class="home-link" href="/community_list">최근 게시글</a></h2>
-                    <hr class="mb-4">
-                    <% for (var i=0; i < 10; i++) { %>
+                    <hr class="mb-4"> 
+                    <% for (var i=0; i < num[1]; i++) { %>
                         <div class="card mb-1">
-                            <div class="card-body">1번 A+B</div>
+                            <div class="card-body"><%=i+1%>. <a href="community_detail/<%= posts[i]._id %>"><%=posts[i].Title %></a></div>
                         </div>
                         <% } %>
                 </div>
                 <div class="col-lg-4">
                     <h2 class="h4 fw-bolder"><a class="home-link" href="/ranking">사용자 순위</a></h2>
                     <hr class="mb-4">
-                    <% for (var i=0; i < 10; i++) { %>
+                    <% for (var i=0; i < num[2]; i++) { %>
                         <div class="card mb-1">
-                            <div class="card-body">1번 A+B</div>
+                            <div class="card-body"><%=i+1%>. <%= users[i].Nickname %></div>
                         </div>
                         <% } %>
                 </div>

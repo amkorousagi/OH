@@ -49,7 +49,7 @@ app.get("/problem_list", async function (req, res) {
   res.render("problem_list", { problems })
 })
 app.get("/problem_detail/:id", async function (req, res) {
-  console.log(req.params.id)
+  console.log("id is ",req.params.id)
   const result = await axios.get(backURL + "/problem_no_auth/" + req.params.id)
   const data = result.data.problem
   console.log("detail " + JSON.stringify(data))

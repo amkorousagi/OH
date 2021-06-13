@@ -3,6 +3,10 @@
     width: 75%;
 }
 
+#title, #content, #body{
+    padding-left: 5%;
+}
+
 .detail{
     display: block;
     margin: 0 auto;
@@ -11,10 +15,11 @@
     resize: none;
     position: relative;
 }
+.reply_block{
+    display: inline;
+    height: 100px;
+}
 .reply{
-    display: block;
-    height: 100%;
-    resize: none;
     padding-right: 5%;
 }
 
@@ -22,7 +27,9 @@
     width: 80%;
     margin-left: 10%;
 }
-
+#input_title{
+    width:200px;
+}
 .reply_input{
     display: block;
     margin-left: 5%;
@@ -31,12 +38,14 @@
     resize: none;
 
 }
-.reply_cont{
-    border-right: 0.5px dashed #bbb;
+
+#reply_list{
+    width: 80%;
+    margin-left: 10%;
 }
 .detail_table{
     border-top: 1px dashed #bbb;
-    /* border-collapse: collapse; */
+    border-collapse: collapse;
     width: 80%;
     margin-left: 10%;
 }
@@ -48,7 +57,6 @@
     color: #fff;
     border: none;
     border-radius: 20px;
-    
     transition: background-color;
 }
 .submit_reply:active{
@@ -57,7 +65,8 @@
 
 td {
     border-top: 0.5px dashed #bbb;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right:10px;
     align-items: center;
     text-align: left;
 }

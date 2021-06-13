@@ -57,17 +57,16 @@
                         },
                         error: function (a, b, c) {
                             console.log(c);
-                            console.log(data);
+                            console.log(data2);
                         },
                         beforeSend: function (xhr) {
                             /* Authorization header */
                             xhr.setRequestHeader("Authorization", "bearer " + localStorage.getItem("token"));
-
                         }
                     })
                 },
                 error: function (a, b, c) {
-                    alert('id와 비밀번호를 확인해 주세요.');
+                    alert('비밀번호를 확인해 주세요.');
                     console.log(c);
                 }
             });
@@ -88,7 +87,7 @@
                                 <div class="text-center mb-5">
                                     <h2 class="fw-bolder mb-5">내정보</h2>
                                 </div>
-                                <form class="row gx-5 justify-content-center mb-5">
+                                <div class="row gx-5 justify-content-center mb-5">
                                     <div class="col-lg-0">
                                         <form>
                                             <div class="form-floating mb-3">
@@ -118,14 +117,29 @@
                                                 <label for="stateMessage">상태메세지</label>
                                             </div>
                                             <input type="hidden" id="password_check" value="<%= user.UserPassword %>">
-                                            <div class="d-grid"><button type="button" class="btn btn-primary btn-lg"
-                                                    onclick="onrequest()">수정</button></div>
+                                            <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">수정</button></div>
                                         </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-5 col-xl-5">
+                        <div class="card mb-5 mb-xl-0">
+                            <div class="card-body p-5">
+                                <div class="text-center mb-5">
+                                    <h2 class="fw-bolder mb-5">푼 문제</h2>
+                                </div>
+                                <div>
+                                    <%= user.SolvedProblem.length %>
+                                    <% for (var i=0; i < user.SolvedProblem.length; i++) { %>
+                                    abc
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>

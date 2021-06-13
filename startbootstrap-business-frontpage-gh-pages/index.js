@@ -16,7 +16,7 @@ app.use(express.static("public"))
 
 app.get("/", async function (req, res) {
   const result_problem = await axios.get(
-    "http://localhost:3001/problem_no_auth"
+    backURL + "/problem_no_auth"
   )
   const problems = result_problem.data.problems
   const NumOfProblems = problems.length < 10 ? problems.length : 10

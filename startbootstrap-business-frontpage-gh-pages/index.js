@@ -70,9 +70,12 @@ app.get("/community_detail/:id", async function (req, res) {
   const result = await axios.get(
     "http://localhost:3001/post_no_auth/" + req.params.id
   )
+  const result2 = await axios.get(  "http://localhost:3001/comment_no_auth?RefPost=" + req.params.id)
+  console.log(result2.data)
+  const comments = result2.data.comments
   const data = result.data.post
   console.log(data)
-  res.render("community_detail", { data })
+  res.render("community_detail", { data,comments })
 })
 
 app.get("/ranking", async function (req, res) {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>로그인</title>
+    <title>내정보</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -25,7 +25,6 @@
         function onrequest() {
             const id = document.getElementById('login_user_id').value;
             const password = document.getElementById('login_password').value;
-            const password_check = document.getElementById('login_password_check').value;
             const nickname = document.getElementById('nickname').value;
             const stateMessage = document.getElementById('stateMessage').value;
             const data = {
@@ -39,17 +38,30 @@
                 type: "POST",
                 accepts: "application/json",
                 contentType: "application/json; charset=utf-8",
-                url: 'http://localhost:3001/user_no_auth/join', 
+                url: '<%= backURL%>/user_no_auth/login', 
                 data: JSON.stringify(data),
                 dataType: "json",
-                success: function(data){
-                    console.log(data);
-                    alert('회원 가입이 완료되었습니다.')
-                    window.open('/', '_self');
+                success: function(ret){
+                    $.ajax({
+                        type: "PATCH",
+                        accepts: "application/json",
+                        contentType: "application/json; charset=utf-8",
+                        url: '<%= backURL%>/user', 
+                        data: data,
+                        dataType: "json",
+                        success: function(data){
+                            alert('수정되었습니다.');
+                            window.open('/mypage','_self');
+                        },
+                        error: function(a,b,c){
+                            console.log(c);
+                            console.log(data);
+                        }
+                    })      
                 },
                 error: function(a,b,c){
-                    console.log(a,b,c)
-                    alert('이미 등록된 id입니다.');
+                    alert('id와 비밀번호를 확인해 주세요.');
+                    console.log(c);
                 }
             });
         }
@@ -73,7 +85,7 @@
                                 <div class="col-lg-0">
                                     <form>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="login_user_id" type="text" autofocus="autofocus" placeholder="아이디" value="<%= data.UserId %>" disabled>
+                                            <input class="form-control" id="login_user_id" type="text" autofocus="autofocus" placeholder="아이디" value="<%= user.UserId %>" disabled>
                                             <label for="login_user_id">아이디</label>
                                         </div>
                                         <div class="form-floating mb-3">
@@ -81,17 +93,18 @@
                                             <label for="login_password">비밀번호</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="nickname" type="text" placeholder="닉네임" value="<%= data.Nickname %>">
+                                            <input class="form-control" id="nickname" type="text" placeholder="닉네임" value="<%= user.Nickname %>">
                                             <label for="nickname">닉네임</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="date" type="text" placeholder="등록일" value="<%= data.Date.substring(0, 10) %>" disabled>
+                                            <input class="form-control" id="date" type="text" placeholder="등록일" value="<%= user.Date.substring(0, 10) %>" disabled>
                                             <label for="date">등록일</label>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="stateMessage" type="text" placeholder="상태메세지" value="<%= data.StateMessage %>">
+                                            <input class="form-control" id="stateMessage" type="text" placeholder="상태메세지" value="<%= user.StateMessage %>">
                                             <label for="stateMessage">상태메세지</label>
                                         </div>
+                                        <input type="hidden" id="password_check" value="<%= user.UserPassword %>">
                                         <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">수정</button></div>
                                     </form>
                                 </div>

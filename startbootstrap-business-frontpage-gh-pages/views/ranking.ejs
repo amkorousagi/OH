@@ -47,7 +47,7 @@
               <td><%= users[i].Nickname %></td>
               <td><%= users[i].StateMessage %></td>
               <td><%= users[i].Score %></td>
-              <td><%= (users[i].NumOfSubmit == 0 || users[i].NumOfSubmit == undefined)?"None":users[i].NumOfSubmit %></td>
+              <td><%= (users[i].NumOfSubmit == 0 || users[i].NumOfSubmit == undefined)?0:users[i].NumOfSubmit %></td>
               <td id="last"><%= (users[i].NumOfSubmit == 0 || users[i].NumOfSubmit == undefined)?0:(users[i].Score)/(users[i].NumOfSubmit) %></td>
 
             </tr>

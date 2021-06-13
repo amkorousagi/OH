@@ -26,7 +26,48 @@
 <body>
     <!-- Responsive navbar-->   
     <%- include('layouts/navbar'); -%>
-    
+    <!-- Mypage section-->
+    <section class="bg-light py-5 border-bottom">
+        <div class="container px-5 my-5">   
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-5 col-xl-5">
+                    <div class="card mb-5 mb-xl-0">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-5">
+                                <h2 class="fw-bolder mb-5">내정보</h2>
+                            </div>
+                            <form class="row gx-5 justify-content-center mb-5">
+                                <div class="col-lg-0">
+                                    <form>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="login_user_id" type="text" autofocus="autofocus" placeholder="아이디" value="<%= data.UserId %>" disabled>
+                                            <label for="login_user_id">아이디</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="login_password" type="password" placeholder="비밀번호" value="">
+                                            <label for="login_password">비밀번호</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="nickname" type="text" placeholder="닉네임" value="<%= data.Nickname %>">
+                                            <label for="nickname">닉네임</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="date" type="text" placeholder="등록일" value="<%= data.Date.substring(0, 10) %>" disabled>
+                                            <label for="date">등록일</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="stateMessage" type="text" placeholder="상태메세지" value="<%= data.StateMessage %>">
+                                            <label for="stateMessage">상태메세지</label>
+                                        </div>
+                                        <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">수정</button></div>
+                                    </form>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- Footer-->
     <%- include('layouts/footer'); -%>

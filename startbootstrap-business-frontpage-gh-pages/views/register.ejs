@@ -27,10 +27,12 @@
             const password = document.getElementById('login_password').value;
             const password_check = document.getElementById('login_password_check').value;
             const nickname = document.getElementById('nickname').value;
+            const stateMessage = document.getElementById('stateMessage').value;
             const data = {
                     UserId: id,
                     UserPassword: password,
-                    Nickname: nickname
+                    Nickname: nickname,
+                    StateMessage: stateMessage
                 };
             //console.log(JSON.stringify(data));
             $.ajax({
@@ -61,9 +63,6 @@
     <section class="bg-light py-5 border-bottom">
         <div class="container px-5 my-5">   
             <div class="row gx-5 justify-content-center">
-                <!-- Pricing card free-->
-                <div class="col-lg-2 col-xl-2"></div>
-                <!-- Pricing card pro-->
                 <div class="col-lg-5 col-xl-5">
                     <div class="card mb-5 mb-xl-0">
                         <div class="card-body p-5">
@@ -92,6 +91,10 @@
                                             <input class="form-control" id="nickname" type="text" placeholder="닉네임" value="">
                                             <label for="nickname">닉네임</label>
                                         </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="stateMessage" type="text" placeholder="상태메세지" value="">
+                                            <label for="stateMessage">상태메세지</label>
+                                        </div>
                                         <div class="d-grid"><button type="button" class="btn btn-primary btn-lg" onclick="onrequest()">회원가입</button></div>
                                     </form>
                                 </div>
@@ -99,8 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Pricing card enterprise-->
-                <div class="col-lg-2 col-xl-2"></div>
+            </div>
         </div>
     </section>
     <!-- Footer-->

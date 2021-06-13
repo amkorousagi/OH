@@ -56,7 +56,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card mb-5 mb-xl-0">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold counter">153</div>
+                            <div class="display-4 fw-bold counter"><%= problems.length %></div>
                             <div class="text-muted">전체 문제</div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card mb-5 mb-xl-0">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold counter">13</div>
+                            <div class="display-4 fw-bold counter"><%= posts.length %></div>
                             <div class="text-muted">전체 게시글</div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                 <div class="col-lg-6 col-xl-3">
                     <div class="card">
                         <div class="card-body p-4 text-center">
-                            <div class="display-4 fw-bold counter">35</div>
+                            <div class="display-4 fw-bold counter"><%= users.length %></div>
                             <div class="text-muted">전체 멤버</div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     <hr class="mb-4">
                     <% for (var i=0; i < num[0]; i++) { %>
                         <div class="card mb-1">
-                            <div class="card-body"><%=i+1%>. <a href="problem_detail/<%= problems[i]._id %>"><%=problems[i].Title %></a></div>
+                            <div class="card-body"><%=i+1%>. <a class="home-link" href="problem_detail/<%= problems[i]._id %>"><%=problems[i].Title %></a></div>
                         </div>
                         <% } %>
                 </div>
@@ -100,7 +100,7 @@
                     <hr class="mb-4"> 
                     <% for (var i=0; i < num[1]; i++) { %>
                         <div class="card mb-1">
-                            <div class="card-body"><%=i+1%>. <a href="community_detail/<%= posts[i]._id %>"><%=posts[i].Title %></a></div>
+                            <div class="card-body"><%=i+1%>. <a class="home-link" href="community_detail/<%= posts[i]._id %>"><%=posts[i].Title %></a></div>
                         </div>
                         <% } %>
                 </div>

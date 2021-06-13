@@ -106,8 +106,8 @@ app.get("/mypage", async function (req, res) {
     headers: { Authorization: "bearer " + req.cookies.token },
   })
   const data = result.data.user
-  console.log("detail " + JSON.stringify(data))
   res.render("mypage", { data })
+  console.log("detail " + JSON.stringify(data)) 
 })
 
 //app.post()

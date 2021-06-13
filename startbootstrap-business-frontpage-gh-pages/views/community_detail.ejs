@@ -15,7 +15,7 @@
     <link href="http://localhost:4000/css/styles.css" rel="stylesheet" />
     <link href="http://localhost:4000/css/comdet.css" rel="stylesheet" />
     <script src="http://localhost:4000/jquery-3.6.0.min.js"></script>
-    <script>
+    <!-- <script>
         function request() {
             let url_string = window.location.href
             let arr = url_string.split("/")
@@ -37,7 +37,7 @@
                     else {
                         alert("작성오류");
                     }
-                    //window.open('/problem_list', '_self')
+                    // window.open('/problem_list', '_self')
                 },
                 error: function (a, b, c) {
                     console.log(a);
@@ -50,11 +50,8 @@
 
                 // }
             });
-
         }
-    </script>
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="js/logout.js"></script>  
+    </script> -->
 </head>
 
 <body>
@@ -89,17 +86,13 @@
                         <textarea class="reply_input" id="reply_cont" value="reply" placeholder="댓글을 입력해주세요."></textarea>
                     </td>
                     <td>
-                        <button type="submit" id="button" class="submit_reply" onclick="request()">입력</button>
+                        <button type="submit" id="button" class="submit_reply">입력</button>
                     </td>
                 </tr>
                 <% for (var i=0; i < 5; i++) { %>
                 <tr>
-                    <td colspan="3" class="reply_cont">
-                        <%= data.ToComment %>
-                    </td>
-                    <td id="writer">
-                        <%= data.Writer %>
-                    </td>
+                    <td colspan="3" class="reply_cont">댓글내용</td>
+                    <td id="writer">작성자</td>
                 </tr>
                 <% } %>
             </table>

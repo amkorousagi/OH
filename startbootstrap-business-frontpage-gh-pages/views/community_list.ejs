@@ -42,7 +42,7 @@
             <tbody>
             <% for (var i = posts.length-1; i >= 0; i--) { %>
             <tr>
-                <td><%= posts.length-i %></td>
+                <td><%= i + 1 %></td>
                 <td><a href="community_detail/<%= posts[i]._id %>"><%= posts[i].Title %></a></td>
                 <td><%= posts[i].Nickname %></td>
                 <td><%= posts[i].Date.substring(0, 10) %></td>

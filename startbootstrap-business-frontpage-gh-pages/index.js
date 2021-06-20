@@ -7,19 +7,22 @@ const cookieParser = require("cookie-parser")
 const config = require("./config")
 
 const backURL = config.backURL
-
+const cors = require("cors")
 app.locals.frontURL = config.frontURL
 app.locals.backURL = backURL
 app.set("view engine", "ejs")
+app.use(cors())
 app.use(cookieParser())
 app.use(express.static("public"))
 app.get("/test",(req,res)=>{
   res.send("hi")
 })
 app.get("/", async function (req, res) {
+  console.log("start")
   const result_problem = await axios.get(
     backURL + "/problem_no_auth"
   )
+  console.log("result ",result_problem)
   const problems = result_problem.data.problems
   const NumOfProblems = problems.length < 10 ? problems.length : 10
   const result_post = await axios.get(backURL + "/post_no_auth")
